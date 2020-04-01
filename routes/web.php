@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('admin-dashboard', function () {
+    return view('admin/admin_template');
+});
+Route::get('admin-dashboard/index', function () {
+    return view('admin/index');
+});
