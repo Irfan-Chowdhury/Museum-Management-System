@@ -44,8 +44,7 @@
                                             {{-- <button type="button" title="Edit" class="m-1 btn btn-info fa fa-edit" data-toggle="modal" data-target="#exampleModal-{{$admin->id}}"></button>
                                                     @include('admin.pages.admins.admin-view') --}}
                                             <a href="{{route('admin-edit',$admin->id)}}" class="m-1 btn btn-info fa fa-edit" title="Edit"></a>
-                                            <a href="#" class="m-1 btn btn-danger fa fa-trash-alt" title="Delete"></a>
-                                            
+                                            <a href="{{route('admin-delete',$admin->id)}}" onclick="return confirm('Are You Sure to delete ?')" class="btn btn-danger fa fa-trash-alt" title="Delete"></a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/admin-list', 'AdminController@admin_list')->name('admin-list');
     Route::get('/admin-edit/{id}', 'AdminController@admin_edit')->name('admin-edit');
     Route::post('/admin-update/{id}', 'AdminController@admin_update')->name('admin-update');
+    Route::get('/admin-delete/{id}', 'AdminController@admin_delete')->name('admin-delete');
 
 });
 

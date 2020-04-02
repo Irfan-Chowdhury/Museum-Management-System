@@ -133,4 +133,20 @@ class AdminController extends Controller
         //return view('admin.pages.admins.admin-edit',compact('user'));
 
     }
+
+    public function admin_delete($id)
+    {
+        $admin = User::find($id);
+
+        if (File::exists(public_path().$admin->photo)) //delete previous image from storage
+        {  
+            File::delete(public_path().$admin->photo);
+        }
+
+        $admin->delete();
+        session()->flash('type','success');
+        session()->flash('message','Admin deleted successful.');
+        
+        return redirect()->back();
+    }
 }
