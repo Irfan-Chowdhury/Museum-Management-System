@@ -106,6 +106,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('admin/admin-lte/dist/js/demo.js')}}"></script>
     
+    <!-- Photo show after select any photo file-->
+    <script src="{{asset('admin/js/style.js')}}"></script>
+
     <!-- DataTables -->
     <script src="{{asset('admin/admin-lte/plugins/datatables/jquery.dataTables.js')}}"></script>
     <script src="{{asset('admin/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>

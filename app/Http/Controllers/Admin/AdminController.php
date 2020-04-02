@@ -66,8 +66,71 @@ class AdminController extends Controller
 
     public function admin_list()
     {
-        $users = User::where('roll','=','admin')->get();
+        $admins = User::where('roll','=','admin')->get();
 
-        return view('admin.pages.admins.admin-list',compact('users'));
+        return view('admin.pages.admins.admin-list',compact('admins'));
+    }
+
+    public function admin_edit($id)
+    {
+        $admin = User::find($id);
+
+        return view('admin.pages.admins.admin-edit',compact('admin'));
+
+    }
+
+    public function admin_update(Request $request,$id)
+    {
+         //--------------------------- validation -----------------------------
+         $validator= Validator::make($request->all(),[
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'phone'     => 'required',
+            'address'   => 'required',
+        ]);
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $admin = User::find($id);
+
+        
+        // if ($request->photo!=$post->photo) 
+        if ($request->hasFile('photo')) 
+        {
+            if (File::exists(public_path().$admin->photo)) //delete previous image from storage
+            {  
+                File::delete(public_path().$admin->photo);
+            }
+            
+            // --- Image Intervention Start ---
+            $file           = $request->file('photo');
+            $imageName      = time().'.'.$file->getClientOriginalExtension();
+            $directory      = '/admin/images/admins/';
+            $imageUrl       = $directory.$imageName;
+            $upload_path    = public_path().$imageUrl;
+            // $upload_path       = public_path($imageUrl); //Move the Product Image into the required folder
+            Image::make($file)->resize(300,300)->save($upload_path);
+            
+            // --- Image Intervention End ---
+            
+            $admin->photo   = $imageUrl;            
+        }
+
+        $admin->name    = $request->name;
+        $admin->email   = $request->email;
+        $admin->phone   = $request->phone;
+        $admin->address = $request->address;
+        
+        $admin->update();
+
+        session()->flash('type','success');
+        session()->flash('message','Admin info updated successful.');
+        
+        return redirect()->route('admin-list');
+
+        //return view('admin.pages.admins.admin-edit',compact('user'));
+
     }
 }

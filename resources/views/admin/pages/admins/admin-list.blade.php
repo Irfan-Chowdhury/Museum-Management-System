@@ -14,6 +14,9 @@
                 <div class="card-header">
                   <h2 class="text-secondary">Admins Data List</h2>
                 </div>
+                <div>
+                    @include('admin.includes.session_message')
+                </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <table id="tableId" class="table table-bordered table-striped">
@@ -29,17 +32,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $key => $item)                                    
+                                @foreach ($admins as $key => $admin)                                    
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->email}}</td>
-                                        <td>{{$item->phone}}</td>
-                                        <td>{{substr(strip_tags($item->address), 0, 15)}}</td> <!--String Limit-->
-                                        <td><img src="{{asset("$item->photo")}}" height="50px" width="50px" alt="" srcset=""></td>
+                                        <td>{{$admin->name}}</td>
+                                        <td>{{$admin->email}}</td>
+                                        <td>{{$admin->phone}}</td>
+                                        <td>{{substr(strip_tags($admin->address), 0, 15)}}</td> <!--String Limit-->
+                                        <td><img src="{{asset("$admin->photo")}}" height="50px" width="50px" alt="" srcset=""></td>
                                         <td>
-                                            <a href="#" class="m-1 btn btn-info fa fa-edit" title="Edit" ></a>
+                                            {{-- <button type="button" title="Edit" class="m-1 btn btn-info fa fa-edit" data-toggle="modal" data-target="#exampleModal-{{$admin->id}}"></button>
+                                                    @include('admin.pages.admins.admin-view') --}}
+                                            <a href="{{route('admin-edit',$admin->id)}}" class="m-1 btn btn-info fa fa-edit" title="Edit"></a>
                                             <a href="#" class="m-1 btn btn-danger fa fa-trash-alt" title="Delete"></a>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
@@ -53,4 +59,7 @@
     </div>
 </section>
 
+
 @endsection
+
+
