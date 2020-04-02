@@ -52,7 +52,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{route('admin-list')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Admins List</p>
                 </a>

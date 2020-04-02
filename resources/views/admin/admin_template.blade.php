@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>@yield('title','AdminLTE 3 | Dashboard')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -29,6 +29,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset('admin/admin-lte/plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('admin/admin-lte/plugins/summernote/summernote-bs4.css')}}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{asset('admin/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -43,16 +45,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @include('admin.includes.sidebar')
 
 
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
 
-
- 
     <!--====================== Your Page Content Here START ===================-->
                                     @yield('admin-content')
     <!--====================== Your Page Content Here END   ===================-->
 
-
-
-
+</div>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -105,5 +105,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{asset('admin/admin-lte/dist/js/pages/dashboard.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('admin/admin-lte/dist/js/demo.js')}}"></script>
+    
+    <!-- DataTables -->
+    <script src="{{asset('admin/admin-lte/plugins/datatables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('admin/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+    <script>   
+      $(document).ready(function(){
+          $('#tableId').DataTable();
+      });
+  </script>
 </body>
 </html>

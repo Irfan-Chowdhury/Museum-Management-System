@@ -62,8 +62,12 @@ class AdminController extends Controller
         session()->flash('message','Admin Added Successful.');
         
         return redirect()->back();
-      
+    }
 
+    public function admin_list()
+    {
+        $users = User::where('roll','=','admin')->get();
 
+        return view('admin.pages.admins.admin-list',compact('users'));
     }
 }

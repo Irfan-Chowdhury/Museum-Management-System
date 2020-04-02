@@ -1,10 +1,8 @@
 @extends('admin.admin_template')
 
+@section('title','Admin Create')
+    
 @section('admin-content')
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -104,6 +102,4 @@
             </div>
         </div>
     </section>
-</div>
-<!-- /.content-wrapper -->
 @endsection

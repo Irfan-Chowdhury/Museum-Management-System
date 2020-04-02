@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     // -- Admin --
     Route::get('/admin-create', 'AdminController@admin_create')->name('admin-create');
     Route::post('/admin-save', 'AdminController@admin_save')->name('admin-save');
+    Route::get('/admin-list', 'AdminController@admin_list')->name('admin-list');
 
 });
 
