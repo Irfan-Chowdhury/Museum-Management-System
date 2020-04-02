@@ -15,13 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin-dashboard', function () {
-    return view('admin/admin_template');
-});
-Route::get('admin-dashboard/index', function () {
-    return view('admin/index');
-});
+// Route::get('admin-dashboard', function () {
+//     return view('admin/admin_template');
+// });
+// Route::get('admin-dashboard/index', function () {
+//     return view('admin/index');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
+    
+    // -- Admin --
+    Route::get('/admin-create', 'AdminController@admin_create')->name('admin-create');
+    Route::post('/admin-save', 'AdminController@admin_save')->name('admin-save');
+
+});
+
