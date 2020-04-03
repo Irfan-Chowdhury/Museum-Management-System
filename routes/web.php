@@ -45,5 +45,15 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/notice-delete/{id}','NoticeController@notice_delete')->name('notice-delete');
     Route::get('/notice-unpublished/{id}','NoticeController@notice_unpublished')->name('notice-unpublished');
     Route::get('/notice-published/{id}','NoticeController@notice_published')->name('notice-published');
+
+    // -- Rules --
+    Route::get('/rule-create','RuleController@rule_create')->name('rule-create');
+    Route::post('/rule-save','RuleController@rule_save')->name('rule-save');
+    Route::get('/rule-list','RuleController@rule_list')->name('rule-list');
+    Route::get('/rule-edit/{id}','RuleController@rule_edit')->name('rule-edit');
+    Route::post('/rule-update/{id}','RuleController@rule_update')->name('rule-update');
+    Route::get('/rule-delete/{id}','RuleController@rule_delete')->name('rule-delete');
+    Route::get('/rule-unpublished/{id}','RuleController@rule_unpublished')->name('rule-unpublished');
+    Route::get('/rule-published/{id}','RuleController@rule_published')->name('rule-published');
 });
 
