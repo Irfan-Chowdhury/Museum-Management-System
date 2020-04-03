@@ -38,7 +38,7 @@
           <!--Admin-->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-user-secret"></i>
               <p>
                 Admins Info
                 <i class="right fas fa-angle-left"></i>
@@ -55,6 +55,31 @@
                 <a href="{{route('admin-list')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Admins List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+          <!--Notice-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-bullhorn"></i>
+              <p>
+                Notice
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('notice-create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add New Notice</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('notice-list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Notice Manage</p>
                 </a>
               </li>
             </ul>

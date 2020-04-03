@@ -36,5 +36,14 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::post('/admin-update/{id}', 'AdminController@admin_update')->name('admin-update');
     Route::get('/admin-delete/{id}', 'AdminController@admin_delete')->name('admin-delete');
 
+    // -- Notice --
+    Route::get('/notice-create','NoticeController@notice_create')->name('notice-create');
+    Route::post('/notice-save','NoticeController@notice_save')->name('notice-save');
+    Route::get('/notice-list','NoticeController@notice_list')->name('notice-list');
+    Route::get('/notice-edit/{id}','NoticeController@notice_edit')->name('notice-edit');
+    Route::post('/notice-update/{id}','NoticeController@notice_update')->name('notice-update');
+    Route::get('/notice-delete/{id}','NoticeController@notice_delete')->name('notice-delete');
+    Route::get('/notice-unpublished/{id}','NoticeController@notice_unpublished')->name('notice-unpublished');
+    Route::get('/notice-published/{id}','NoticeController@notice_published')->name('notice-published');
 });
 

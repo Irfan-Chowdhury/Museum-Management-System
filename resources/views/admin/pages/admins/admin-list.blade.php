@@ -1,4 +1,4 @@
-@extends('admin.admin_template')
+@extends('admin.layouts.admin-master')
 
 @section('title','Admin List')
     

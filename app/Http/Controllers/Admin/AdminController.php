@@ -40,7 +40,7 @@ class AdminController extends Controller
         $admin->phone   = $request->phone;
         $admin->address = $request->address;
         $admin->password= Hash::make($request->password);
-        $admin->roll    = 'admin' ;
+        $admin->role    = 'admin' ;
         
         // --- Image Intervention Start ---
 
@@ -66,7 +66,7 @@ class AdminController extends Controller
 
     public function admin_list()
     {
-        $admins = User::where('roll','=','admin')->get();
+        $admins = User::where('role','=','admin')->get();
 
         return view('admin.pages.admins.admin-list',compact('admins'));
     }

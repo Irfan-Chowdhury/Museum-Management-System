@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin-master')
 
-@section('title','Admin Edit')
+@section('title','Notice Edit')
     
 @section('admin-content')
 
@@ -9,9 +9,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Edit  Admin Data</h1>
+            <h1 class="m-0 text-dark">Edit  Notice</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Notice</a></li>
+                <li class="breadcrumb-item active">Edit</li>
+            </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -29,46 +33,37 @@
                 <div class="col-md-8">
                      <!-- general form elements -->
                     <div class="card card-primary">
+                        <div>
+                            @include('admin.includes.session_message')
+                        </div>
                         <div class="card-header">
-                            <h4 class="text-center">{{$admin->name}}'s' - Info Edit</h4>
+                            <h5 class="text-center">{{$notice->title}}'s - Info Edit</h5>
                         </div>
                         <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="POST" action="{{route('admin-update',$admin->id)}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('notice-update',$notice->id)}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="">Full Name</label>
-                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$admin->name}}">
-                                        @error('name')
+                                        <label for="">Title</label>
+                                        <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{$notice->title}}">
+                                        @error('title')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    
+                                    
                                     <div class="form-group">
-                                        <label for="">Email</label>
-                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{$admin->email}}">
-                                        @error('email')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Phone</label>
-                                        <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{$admin->phone}}">
-                                        @error('phone')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Address</label>
-                                        <textarea name="address" class="form-control @error('address') is-invalid @enderror"  rows="3">{{$admin->address}}</textarea>
-                                        @error('address')
+                                        <label for="">Description</label>
+                                        <textarea name="description" class="textarea @error('description') is-invalid @enderror">{{$notice->description}}</textarea>
+                                        @error('description')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputFile">Update Image</label> <br>
-                                        <img src="{{asset("$admin->photo")}}" height="100px" width="100px" id="admin_photo">
-                                        <input type="file" name="photo" class="form-control" onchange="showImage(this,'admin_photo')">
+                                        <img src="{{asset("$notice->photo")}}" height="100px" width="100px" id="photo">
+                                        <input type="file" name="photo" class="form-control" onchange="showImage(this,'photo')">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -77,10 +72,6 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
-
-                            <div>
-                                @include('admin.includes.session_message')
-                            </div>
                         </div>
                         <!-- /.card -->
                 </div>
