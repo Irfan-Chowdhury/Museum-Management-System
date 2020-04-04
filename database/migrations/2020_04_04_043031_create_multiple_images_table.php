@@ -4,22 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNoticesTable extends Migration
+class CreateMultipleImagesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+
+    //-- This file will be updated later --
+
+    public function up() 
     {
-        Schema::create('notices', function (Blueprint $table) {
+        Schema::create('multiple_images', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id'); //Admin
-            $table->string('title')->unique();
-            $table->longText('description');
-            $table->string('photo')->nullable();
-            $table->string('status')->default('published');
+            // $table->unsignedBigInteger('museum_id');
+            $table->string('photo');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateNoticesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notices');
+        Schema::dropIfExists('multiple_images');
     }
 }

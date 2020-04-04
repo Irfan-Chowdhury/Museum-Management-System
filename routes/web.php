@@ -55,5 +55,15 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/rule-delete/{id}','RuleController@rule_delete')->name('rule-delete');
     Route::get('/rule-unpublished/{id}','RuleController@rule_unpublished')->name('rule-unpublished');
     Route::get('/rule-published/{id}','RuleController@rule_published')->name('rule-published');
+    
+    // -- Museum --
+    Route::get('/museum-create','MuseumController@museum_create')->name('museum-create');
+    Route::post('/museum-save','MuseumController@museum_save')->name('museum-save');
+    Route::get('/museum-manage','MuseumController@museum_manage')->name('museum-manage');
+    Route::get('/museum-edit/{id}','MuseumController@museum_edit')->name('museum-edit');
+
+    Route::post('/museum-update/{id}','MuseumController@museum_update')->name('museum-update');
+    Route::get('/museum-delete/{id}','MuseumController@museum_delete')->name('museum-delete');
+    
 });
 

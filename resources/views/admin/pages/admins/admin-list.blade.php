@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <table id="tableId" class="table table-bordered table-striped">
                         <thead>
-                            <tr class="text-center">
+                            <tr class="text-center table-primary">
                                 <th>SL</th>
                                 <th>Name</th>
                                 <th>Email</th>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNoticesTable extends Migration
+class CreateMuseumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateNoticesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notices', function (Blueprint $table) {
+        Schema::create('museums', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id'); //Admin
-            $table->string('title')->unique();
-            $table->longText('description');
-            $table->string('photo')->nullable();
-            $table->string('status')->default('published');
+            $table->string('museum_name'); 
+            $table->longText('description')->nullable();
+            $table->text('address');
+            $table->text('late_long');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateNoticesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notices');
+        Schema::dropIfExists('museums');
     }
 }
