@@ -61,9 +61,14 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::post('/museum-save','MuseumController@museum_save')->name('museum-save');
     Route::get('/museum-manage','MuseumController@museum_manage')->name('museum-manage');
     Route::get('/museum-edit/{id}','MuseumController@museum_edit')->name('museum-edit');
-
     Route::post('/museum-update/{id}','MuseumController@museum_update')->name('museum-update');
-    Route::get('/museum-delete/{id}','MuseumController@museum_delete')->name('museum-delete');
+    
+    // -- Schedule --
+    Route::get('/schedule-create','ScheduleController@schedule_create')->name('schedule-create');
+    Route::post('/schedule-save','ScheduleController@schedule_save')->name('schedule-save');
+    Route::get('/schedule-manage','ScheduleController@schedule_manage')->name('schedule-manage');
+    Route::get('/schedule-edit/{id}','ScheduleController@schedule_edit')->name('schedule-edit');
+    Route::post('/schedule-update/{id}','ScheduleController@schedule_update')->name('schedule-update');
     
 });
 
