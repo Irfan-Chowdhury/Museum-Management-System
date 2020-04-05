@@ -70,5 +70,19 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/schedule-edit/{id}','ScheduleController@schedule_edit')->name('schedule-edit');
     Route::post('/schedule-update/{id}','ScheduleController@schedule_update')->name('schedule-update');
     
+    // -- Item --
+    Route::get('/item-create','ItemController@item_create')->name('item-create');
+    Route::post('/item-save','ItemController@item_save')->name('item-save');
+    Route::get('/item-list','ItemController@item_list')->name('item-list');
+    Route::get('/item-edit/{id}','ItemController@item_edit')->name('item-edit');
+    Route::post('/item-update/{id}','ItemController@item_update')->name('item-update');
+    Route::get('/item-delete/{id}','ItemController@item_delete')->name('item-delete');
+    
+    // -- Category of Item --
+    Route::get('/category-manage','CategoryController@category_manage')->name('category-manage');
+    Route::post('/category-save','CategoryController@category_save')->name('category-save');
+    Route::post('/category-update/{id}','CategoryController@category_update')->name('category-update');
+    Route::get('/category-delete/{id}','CategoryController@category_delete')->name('category-delete');
+
 });
 

@@ -14,7 +14,7 @@ class ScheduleController extends Controller
     {
         $schedule = Schedule::all(); //for disable if 7 Days are setup
         
-        return view('admin.pages.schedule.schedule-create',compact('schedule');
+        return view('admin.pages.schedule.schedule-create',compact('schedule'));
     }
 
     public function schedule_save(Request $request)
