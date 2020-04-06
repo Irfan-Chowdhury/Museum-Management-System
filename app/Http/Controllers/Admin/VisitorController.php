@@ -1,0 +1,116 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Visitor;
+use Auth;
+
+class VisitorController extends Controller
+{
+    public function visitor_create()
+    {
+        return view('admin.pages.visitor.visitor-create');
+    }
+
+    public function visitor_save(Request $request)
+    {
+        //--------------------------- validation -----------------------------
+        $validator= Validator::make($request->all(),[
+            'name'      => 'required|min:3|max:20',
+            'email'     => 'email|nullable|unique:visitors',
+            'phone'     => 'required|min:11|max:11|unique:visitors',
+            'address'   => 'required',
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $visitor          = new Visitor();
+        $visitor->user_id = Auth::user()->id;
+        $visitor->name    = $request->name;
+        $visitor->email   = $request->email;
+        $visitor->phone   = $request->phone;
+        $visitor->address = $request->address;
+        $visitor->save(); //First Saved Data then Update visitor_id_no
+
+
+        // ----------- Visitor Id No Generate Start --------
+       
+        $last_data  = Visitor::latest()->first(); //Catch th last row's data
+        
+        $timestamp = strtotime($last_data->created_at); // the 'created_at' will make full string formate
+        
+        $year = date('y', $timestamp); //take the last digit of year (like 20). if you want to take full length like 2020 type 'Y' replace of the 'y'
+        $month = date('m', $timestamp); // number of month like-  April = 04
+
+        $year_month = 'MV-'.$year.$month.$last_data->id; // "MV-" = Just a String || "$year" = 20 (last digit of year) || "$month" = number of month like-  April = 04 || "$data->id" the id of database row which you saved 
+
+        $last_data->visitor_id_no = $year_month; // Example:  'MV-200401' || MV- string || 20=Year || 04=April || 01 = id of database (row) 
+        $last_data->update();
+
+        // ----------- Visitor Id No Generate End --------
+
+
+        session()->flash('type','success');
+        session()->flash('message','Visitor Added Successful.');
+        
+        return redirect()->back();
+    }
+
+    public function visitor_list()
+    {
+        $visitors = Visitor::orderBy('id','DESC')->get();
+
+        return view('admin.pages.visitor.visitor-list',compact('visitors'));
+    }
+
+    public function visitor_update(Request $request,$id)
+    {
+        $visitor  = Visitor::find($id);
+
+        //--------------------------- validation -----------------------------
+        $validator= Validator::make($request->all(),[
+            'name'      => 'required|min:3|max:20',
+            'email'     => 'email|nullable|unique:visitors,email,'.$visitor->id,
+            'phone'     => 'required|min:11|max:11|unique:visitors,phone,'.$visitor->id,
+            'address'   => 'required',
+        ]);
+
+        if($validator->fails())
+        {
+            session()->flash('type','danger');
+            session()->flash('message_ERROR','ERROR !! ');
+            session()->flash('message_text',' Please Try Again');
+
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $visitor->user_id = Auth::user()->id;
+        $visitor->name    = $request->name;
+        $visitor->email   = $request->email;
+        $visitor->phone   = $request->phone;
+        $visitor->address = $request->address;
+        $visitor->update();
+
+        session()->flash('type','success');
+        session()->flash('message','Visitor Updated Successful.');
+        
+        return redirect()->route('visitor-list');
+    }
+
+    public function visitor_delete($id)
+    {
+        $visitor  = Visitor::find($id);
+        $visitor->delete();
+
+        session()->flash('type','success');
+        session()->flash('message','Visitor Deleted Successfully.');
+        
+        return redirect()->back();
+    }
+}

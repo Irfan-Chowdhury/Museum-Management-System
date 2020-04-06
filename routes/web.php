@@ -84,5 +84,12 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::post('/category-update/{id}','CategoryController@category_update')->name('category-update');
     Route::get('/category-delete/{id}','CategoryController@category_delete')->name('category-delete');
 
-});
+    // -- Visitor --
+    Route::get('/visitor-create','VisitorController@visitor_create')->name('visitor-create');
+    Route::post('/visitor-save','VisitorController@visitor_save')->name('visitor-save');
+    Route::get('/visitor-list','VisitorController@visitor_list')->name('visitor-list');
+    Route::post('/visitor-update/{id}','VisitorController@visitor_update')->name('visitor-update');
+    Route::get('/visitor-delete/{id}','VisitorController@visitor_delete')->name('visitor-delete');
 
+});
+// VisitorController
