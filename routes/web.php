@@ -90,6 +90,11 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/visitor-list','VisitorController@visitor_list')->name('visitor-list');
     Route::post('/visitor-update/{id}','VisitorController@visitor_update')->name('visitor-update');
     Route::get('/visitor-delete/{id}','VisitorController@visitor_delete')->name('visitor-delete');
+    
+    // -- Visit Entry --
+    Route::get('/visit-entry-create','VisitEntryController@visitor_entry_create')->name('visit-entry-create');
+    Route::post('/visit-entry-save','VisitEntryController@visit_entry_save')->name('visit-entry-save');
+    Route::get('/visit-entry-list','VisitEntryController@visit_entry_list')->name('visit-entry-list');
+    Route::get('/visit-entry-delete/{id}','VisitEntryController@visit_entry_delete')->name('visit-entry-delete');
 
 });
-// VisitorController

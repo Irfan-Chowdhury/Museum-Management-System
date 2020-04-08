@@ -19,10 +19,10 @@ class VisitorController extends Controller
     {
         //--------------------------- validation -----------------------------
         $validator= Validator::make($request->all(),[
-            'name'      => 'required|min:3|max:20',
-            'email'     => 'email|nullable|unique:visitors',
-            'phone'     => 'required|min:11|max:11|unique:visitors',
-            'address'   => 'required',
+            'visitor_name'      => 'required|min:3|max:40',
+            'visitor_email'     => 'email|nullable|unique:visitors',
+            'visitor_phone'     => 'required|min:11|max:11|unique:visitors',
+            'visitor_address'   => 'required',
         ]);
 
         if($validator->fails())
@@ -30,12 +30,12 @@ class VisitorController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $visitor          = new Visitor();
-        $visitor->user_id = Auth::user()->id;
-        $visitor->name    = $request->name;
-        $visitor->email   = $request->email;
-        $visitor->phone   = $request->phone;
-        $visitor->address = $request->address;
+        $visitor                  = new Visitor();
+        $visitor->user_id         = Auth::user()->id;
+        $visitor->visitor_name    = $request->visitor_name;
+        $visitor->visitor_email   = $request->visitor_email;
+        $visitor->visitor_phone   = $request->visitor_phone;
+        $visitor->visitor_address = $request->visitor_address;
         $visitor->save(); //First Saved Data then Update visitor_id_no
 
 
@@ -75,10 +75,10 @@ class VisitorController extends Controller
 
         //--------------------------- validation -----------------------------
         $validator= Validator::make($request->all(),[
-            'name'      => 'required|min:3|max:20',
-            'email'     => 'email|nullable|unique:visitors,email,'.$visitor->id,
-            'phone'     => 'required|min:11|max:11|unique:visitors,phone,'.$visitor->id,
-            'address'   => 'required',
+            'visitor_name'      => 'required|min:3|max:20',
+            'visitor_email'     => 'email|nullable|unique:visitors,visitor_email,'.$visitor->id,
+            'visitor_phone'     => 'required|min:11|max:11|unique:visitors,visitor_phone,'.$visitor->id,
+            // 'visitor_address'   => 'required',
         ]);
 
         if($validator->fails())
@@ -91,10 +91,10 @@ class VisitorController extends Controller
         }
 
         $visitor->user_id = Auth::user()->id;
-        $visitor->name    = $request->name;
-        $visitor->email   = $request->email;
-        $visitor->phone   = $request->phone;
-        $visitor->address = $request->address;
+        $visitor->visitor_name    = $request->visitor_name;
+        $visitor->visitor_email   = $request->visitor_email;
+        $visitor->visitor_phone   = $request->visitor_phone;
+        $visitor->visitor_address = $request->visitor_address;
         $visitor->update();
 
         session()->flash('type','success');

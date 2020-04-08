@@ -12,29 +12,29 @@
               @csrf                             
               <div class="form-group">
                 <label class="d-flex justify-content-start">Name</label>
-                <input type="text" name="visitor_name" class="form-control @error('visitor_name') is-invalid @enderror" value="{{$visitor->visitor_name}}">
-                @error('visitor_name')
+                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{$visitor->name}}">
+                @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
               <div class="form-group">
                 <label class="d-flex justify-content-start">Email</label>
-                <input type="email" name="visitor_email" class="form-control @error('visitor_email') is-invalid @enderror" value="{{$visitor->visitor_email}}">
-                @error('visitor_email')
+                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{$visitor->email}}">
+                @error('email')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
               <div class="form-group">
                 <label class="d-flex justify-content-start">Phone (+88)</label>
-                <input type="number" name="visitor_phone" class="form-control @error('visitor_phone') is-invalid @enderror" value="{{$visitor->visitor_phone}}">
-                @error('visitor_phone')
+                <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{$visitor->phone}}">
+                @error('phone')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
               <div class="form-group">
                 <label  class="d-flex justify-content-start">Address</label>
-                <textarea name="visitor_address" class="form-control @error('visitor_address') is-invalid @enderror" rows="3">{{$visitor->visitor_address}}</textarea>
-                @error('visitor_address')
+                <textarea name="address" class="form-control @error('address') is-invalid @enderror" rows="3">{{$visitor->address}}</textarea>
+                @error('address')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>

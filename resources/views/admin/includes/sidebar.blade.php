@@ -194,7 +194,7 @@
           </li>
 
 
-          <!-- Scedule -->
+          <!-- Visitor -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
@@ -214,6 +214,31 @@
                 <a href="{{route('visitor-list')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Visitors List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Visit Entry -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-ticket-alt"></i>
+              <p>
+                Visit Entry
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('visit-entry-create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add New Visit</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('visit-entry-list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Visit Entry List</p>
                 </a>
               </li>
             </ul>

@@ -41,18 +41,18 @@
                                         
                                         {{-- <td>{{ $visitor->created_at->format('d M, Y') }}</td>  <!-- Time Formate --> --}}
                                         
-                                        <td>{{$visitor->name}}</td>
+                                        <td>{{$visitor->visitor_name}}</td>
 
                                         <td>
-                                            @if($visitor->email==NULL)  
+                                            @if($visitor->visitor_email==NULL)  
                                                 <strong class="text-danger">X</strong>
                                             @else
-                                                {{$visitor->email}}
+                                                {{$visitor->visitor_email}}
                                             @endif
                                         </td>
 
-                                        <td>+88{{$visitor->phone}}</td>
-                                        <td>{{Str::limit($visitor->address,20,' ...')}}</td>
+                                        <td>+88{{$visitor->visitor_phone}}</td>
+                                        <td>{{Str::limit($visitor->visitor_address,20,' ...')}}</td>
                                         <td>
                                              <button type="button" title="Edit" class="m-1 btn btn-info fa fa-edit" data-toggle="modal" data-target="#exampleModal-{{$visitor->id}}"></button>
                                                 @include('admin.pages.visitor.visitor-edit')

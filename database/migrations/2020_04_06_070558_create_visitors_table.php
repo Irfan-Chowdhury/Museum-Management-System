@@ -16,10 +16,10 @@ class CreateVisitorsTable extends Migration
         Schema::create('visitors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id'); //Admin
-            $table->string('name');
-            $table->string('email')->unique()->nullable();
-            $table->string('phone')->unique();
-            $table->text('address');
+            $table->string('visitor_name');
+            $table->string('visitor_email')->unique()->nullable();
+            $table->string('visitor_phone')->unique();
+            $table->text('visitor_address');
             $table->string('visitor_id_no')->nullable();
             $table->timestamps();
         });

@@ -33,6 +33,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset('admin/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('admin/admin-lte/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -109,11 +112,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Photo show after select any photo file-->
     <script src="{{asset('admin/js/style.js')}}"></script>
 
+    <!-- Select2 -->
+    <script src="{{asset('admin/admin-lte/plugins/select2/js/select2.full.min.js')}}"></script>
+
+
     <!-- DataTables -->
     <script src="{{asset('admin/admin-lte/plugins/datatables/jquery.dataTables.js')}}"></script>
     <script src="{{asset('admin/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
     <script>   
+
+      // //Initialize Select2 Elements
+      // $('.select2').select2()
+
+      // //Initialize Select2 Elements
+      // $('.select2bs4').select2({
+      //   theme: 'bootstrap4'
+      // })
+
       $(document).ready(function(){
+
+          //Initialize Select2 Elements
+          $('.select2').select2()
+
+          //Initialize Select2 Elements
+          $('.select2bs4').select2({
+            theme: 'bootstrap4'
+          })
+
           $('#tableId').DataTable();
       });
   </script>
