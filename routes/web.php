@@ -58,12 +58,25 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/rule-published/{id}','RuleController@rule_published')->name('rule-published');
     
     // -- Museum --
-    Route::get('/museum-create','MuseumController@museum_create')->name('museum-create');
-    Route::post('/museum-save','MuseumController@museum_save')->name('museum-save');
-    Route::get('/museum-manage','MuseumController@museum_manage')->name('museum-manage');
-    Route::get('/museum-edit/{id}','MuseumController@museum_edit')->name('museum-edit');
-    Route::post('/museum-update/{id}','MuseumController@museum_update')->name('museum-update');
+    Route::group(['prefix' => 'museum'], function () {
+        
+        // -- Museum --
+        Route::get('/museum-create','MuseumController@museum_create')->name('museum-create');
+        Route::post('/museum-save','MuseumController@museum_save')->name('museum-save');
+        Route::get('/museum-manage','MuseumController@museum_manage')->name('museum-manage');
+        Route::get('/museum-edit/{id}','MuseumController@museum_edit')->name('museum-edit');
+        Route::post('/museum-update/{id}','MuseumController@museum_update')->name('museum-update');
+
+        // -- Photo Gallery --
+        Route::get('/photo-gallery-manage','MuseumController@photo_gallery_create')->name('photo-gallery-manage');
+        Route::post('/photo-save','MuseumController@photo_save')->name('photo-save');
+        Route::post('/photo-update/{id}','MuseumController@photo_update')->name('photo-update');
+        Route::get('/photo-delete/{id}','MuseumController@photo_delete')->name('photo-delete');
+        Route::get('/photo-unpublished/{id}','MuseumController@photo_unpublished')->name('photo-unpublished');
+        Route::get('/photo-published/{id}','MuseumController@photo_published')->name('photo-published');
+    });
     
+
     // -- Schedule --
     Route::get('/schedule-create','ScheduleController@schedule_create')->name('schedule-create');
     Route::post('/schedule-save','ScheduleController@schedule_save')->name('schedule-save');
@@ -99,3 +112,5 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/visit-entry-delete/{id}','VisitEntryController@visit_entry_delete')->name('visit-entry-delete');
 
 });
+
+//Manage = List

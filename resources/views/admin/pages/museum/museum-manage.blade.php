@@ -47,7 +47,6 @@
                                     <td><a href="{{$museum->late_long}}" target="_blank">Click Here</a></td>
                                     <td>
                                         <a href="{{route('museum-edit',$museum->id)}}" class="m-1 btn btn-info fa fa-edit" title="Edit"></a>
-                                        <a href="{{route('museum-delete',$museum->id)}}" onclick="return confirm('Are You Sure to delete ?')" class="btn btn-danger fa fa-trash-alt" title="Delete"></a>
                                     </td>
                                 </tr>
                         </tbody>

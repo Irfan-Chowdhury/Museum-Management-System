@@ -132,6 +132,12 @@
                   <p>Museum Manage</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('photo-gallery-manage')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Photo Gallery Manage</p>
+                </a>
+              </li>
             </ul>
           </li>
 
