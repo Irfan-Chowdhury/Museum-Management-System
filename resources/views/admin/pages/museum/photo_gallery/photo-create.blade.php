@@ -12,7 +12,7 @@
           @csrf  
           
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Photo Title</label>
+            <label for="recipient-name" class="col-form-label">Photo Title [Optional]</label>
             <input type="text" name="title" class="form-control  @error('title') is-invalid @enderror" value="{{old('title')}}" placeholder="Type Photo Title">
             @error('title')
                 <div class="text-danger">{{ $message }}</div>
@@ -20,7 +20,7 @@
           </div>
 
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">About/Quote</label>
+            <label for="recipient-name" class="col-form-label">About/Quote [Optional]</label>
             <textarea name="description" class="form-control  @error('description') is-invalid @enderror" rows="3">{{old('description')}}</textarea>
             @error('description')
                 <div class="text-danger">{{ $message }}</div>
@@ -47,6 +47,11 @@
                 <div class="col-md-3">
                     <div class="form-check">
                         <input name="type" class="form-check-input" type="radio" value="slider">Slider
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <input name="type" class="form-check-input" type="radio" value="about">About
                     </div>
                 </div>
             </div>

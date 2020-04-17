@@ -12,7 +12,7 @@
             @csrf  
             
             <div class="form-group">
-              <label for="recipient-name" class="d-flex justify-content-start">Photo Title</label>
+              <label for="recipient-name" class="d-flex justify-content-start">Photo Title [Optional]</label>
               <input type="text" name="title" class="form-control  @error('title') is-invalid @enderror" value="{{$item->title}}">
               @error('title')
                   <div class="text-danger">{{ $message }}</div>
@@ -20,7 +20,7 @@
             </div>
   
             <div class="form-group">
-              <label for="recipient-name" class="d-flex justify-content-start">About/Quote</label>
+              <label for="recipient-name" class="d-flex justify-content-start">About/Quote [Optional]</label>
               <textarea name="description" class="form-control  @error('description') is-invalid @enderror" rows="3">{{$item->description}}</textarea>
               @error('description')
                   <div class="text-danger">{{ $message }}</div>
@@ -47,6 +47,11 @@
                   <div class="col-md-3">
                       <div class="form-check">
                           <input name="type" class="form-check-input" type="radio" value="slider" {{$item->type=='slider' ? 'checked':''}}>Slider
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="form-check">
+                          <input name="type" class="form-check-input" type="radio" value="about" {{$item->type=='about' ? 'checked':''}}>About
                       </div>
                   </div>
               </div>

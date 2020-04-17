@@ -140,11 +140,11 @@
                   <nav>
                     <ul class="nav topnav">
 
-                      <li class="dropdown active">
+                      <li class="active">
                         <a href="{{route('home')}}">Home</a>
                       </li>
                       <li>
-                        <a href="#">About</a>
+                        <a href="{{route('about')}}">About</a>
                       </li>
                       <li>
                         <a href="#">Gallery</a>

@@ -121,5 +121,6 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
 Route::group(['namespace'=>'Front\Visitor'], function () {
 
     Route::get('/','VisitorController@home')->name('home');
+    Route::get('/about','VisitorController@about')->name('about');
 });
 

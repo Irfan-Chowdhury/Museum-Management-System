@@ -105,7 +105,7 @@ class MuseumController extends Controller
 
     public function photo_gallery_create()
     {
-        $photoGalleries = PhotoGallery::all();
+        $photoGalleries = PhotoGallery::orderBy('id','DESC')->get();
         return view('admin.pages.museum.photo_gallery.photo-gallery-manage',compact('photoGalleries'));
     }
 
@@ -141,8 +141,19 @@ class MuseumController extends Controller
             $directory      = '/admin/images/photo_gallery/';
             $imageUrl       = $directory.$imageName;
             $upload_path    = public_path().$imageUrl;
-            Image::make($file)->resize(1900,700)->save($upload_path);
-            
+
+            //photo size according to condition
+            if ($request->type=='slider') 
+            {
+                Image::make($file)->resize(1900,700)->save($upload_path);
+            }
+            elseif($request->type=='about')
+            {
+                Image::make($file)->resize(900,632)->save($upload_path);
+            }
+            else{
+                Image::make($file)->save($upload_path);
+            }
             // --- Image Intervention End ---
 
             $photoGallery->photo = $imageUrl;
@@ -182,7 +193,8 @@ class MuseumController extends Controller
 
         if ($request->hasFile('photo')) 
         {
-            if (File::exists(public_path().$photoGallery->photo)) //delete previous image from storage
+            //First delete previous image from storage
+            if (File::exists(public_path().$photoGallery->photo)) 
             {  
                 File::delete(public_path().$photoGallery->photo);
             }
@@ -193,8 +205,19 @@ class MuseumController extends Controller
             $directory      = '/admin/images/photo_gallery/';
             $imageUrl       = $directory.$imageName;
             $upload_path    = public_path().$imageUrl;
-            Image::make($file)->resize(1900,700)->save($upload_path);
-            
+
+            //photo size according to condition
+            if ($request->type=='slider') 
+            {
+                Image::make($file)->resize(1900,700)->save($upload_path);
+            }
+            elseif($request->type=='about')
+            {
+                Image::make($file)->resize(900,632)->save($upload_path);
+            }
+            else{
+                Image::make($file)->save($upload_path);
+            }
             // --- Image Intervention End ---
 
             $photoGallery->photo = $imageUrl;

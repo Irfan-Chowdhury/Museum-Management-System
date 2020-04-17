@@ -42,7 +42,7 @@
                                 <tr>
                                     <td>1</td>
                                     <td class="text-center">{{$museum->museum_name}}</td> <!--String Limit type-1 [can't convert html to string]-->
-                                    <td>{{substr(strip_tags($museum->description), 0, 20)}} ...</td> <!--String Limit type-2 [it can convert html to string]-->
+                                    <td>{{substr(strip_tags($museum->description), 0, 20)}}</td><!--String Limit type-2 [it can convert html to string]-->
                                     <td>{{Str::limit($museum->address,20,' ...')}}</td>
                                     <td><a href="{{$museum->late_long}}" target="_blank">Click Here</a></td>
                                     <td>

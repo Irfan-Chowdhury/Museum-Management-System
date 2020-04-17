@@ -1,5 +1,6 @@
 @extends('public.layouts.public-master')
 
+@section('front_title','Home')
 
 @section('public-content')
 
