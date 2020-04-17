@@ -17,6 +17,7 @@ class CreatePhotoGalleriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title')->nullable();
             $table->text('description')->nullable();
+            $table->string('author')->nullable();
             $table->string('type');
             $table->string('status')->default('published');
             $table->string('photo');

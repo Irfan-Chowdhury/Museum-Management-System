@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    //return view('welcome');
-    return view('public.pages.home.index');
-});
+// Route::get('/', function () {
+//     //return view('welcome');
+//     return view('public.pages.home.index');
+// });
 
 // Route::get('admin-dashboard', function () {
 //     return view('admin/admin_template');
@@ -114,3 +114,12 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
 });
 
 //Manage = List
+
+
+// ==================== Public =================
+
+Route::group(['namespace'=>'Front\Visitor'], function () {
+
+    Route::get('/','VisitorController@home')->name('home');
+});
+

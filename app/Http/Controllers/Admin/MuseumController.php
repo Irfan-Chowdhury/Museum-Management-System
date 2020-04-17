@@ -114,6 +114,7 @@ class MuseumController extends Controller
         $validator= Validator::make($request->all(),[
             'title'        => 'nullable|string|max:80',
             'description'  => 'nullable|max:500',
+            'author'       => 'nullable|max:30',
             'photo'        => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
 
@@ -129,6 +130,7 @@ class MuseumController extends Controller
         $photoGallery              = new PhotoGallery();
         $photoGallery->title       = $request->title;
         $photoGallery->description = $request->description;
+        $photoGallery->author      = $request->author;
         $photoGallery->type        = $request->type;
 
         if ($request->hasFile('photo')) 
@@ -139,8 +141,7 @@ class MuseumController extends Controller
             $directory      = '/admin/images/photo_gallery/';
             $imageUrl       = $directory.$imageName;
             $upload_path    = public_path().$imageUrl;
-            // Image::make($file)->resize(300,300)->save($upload_path);
-            Image::make($file)->save($upload_path);
+            Image::make($file)->resize(1900,700)->save($upload_path);
             
             // --- Image Intervention End ---
 
@@ -160,6 +161,7 @@ class MuseumController extends Controller
         $validator= Validator::make($request->all(),[
             'title'        => 'nullable|string|max:80',
             'description'  => 'nullable|max:500',
+            'author'       => 'nullable|max:30',
             'photo'        => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024', //This Time No required Image
         ]);
 
@@ -175,6 +177,7 @@ class MuseumController extends Controller
         $photoGallery              = PhotoGallery::find($id);
         $photoGallery->title       = $request->title;
         $photoGallery->description = $request->description;
+        $photoGallery->author      = $request->author;
         $photoGallery->type        = $request->type;
 
         if ($request->hasFile('photo')) 
@@ -190,8 +193,7 @@ class MuseumController extends Controller
             $directory      = '/admin/images/photo_gallery/';
             $imageUrl       = $directory.$imageName;
             $upload_path    = public_path().$imageUrl;
-            // Image::make($file)->resize(300,300)->save($upload_path);
-            Image::make($file)->save($upload_path);
+            Image::make($file)->resize(1900,700)->save($upload_path);
             
             // --- Image Intervention End ---
 

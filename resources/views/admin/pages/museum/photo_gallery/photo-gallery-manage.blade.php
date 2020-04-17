@@ -32,8 +32,9 @@
                             <tr class="text-center table-primary">
                                 <th>SL</th>
                                 <th>Image</th>
-                                <th>Title of Photo</th>
-                                <th>About</th>
+                                <th>Title</th>
+                                <th>About/Quote</th>
+                                <th>Author</th>
                                 <th>Type</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -44,8 +45,9 @@
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
                                         <td class="text-center"><img src="{{asset("$item->photo")}}" height="60px" width="80px" alt="" srcset=""></td>
-                                        <td>{{Str::limit($item->title,20,' ...')}}</td>
-                                        <td>{{Str::limit($item->description,30,' ...')}}</td>
+                                        <td> @if(isset($item->title))       {{Str::limit($item->title,15,' ...')}}       @else NULL @endif</td>
+                                        <td> @if(isset($item->description)) {{Str::limit($item->description,15,' ...')}} @else NULL @endif</td>
+                                        <td> @if(isset($item->author))      {{Str::limit($item->author,15,' ...')}}      @else NULL @endif</td>
                                         <td class="text-center">{{$item->type}}</td>
                                         <td class="text-center">{{$item->status}}</td>
                                         <td class="text-center">

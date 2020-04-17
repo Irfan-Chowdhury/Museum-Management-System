@@ -141,7 +141,7 @@
                     <ul class="nav topnav">
 
                       <li class="dropdown active">
-                        <a href="index.html">Home</a>
+                        <a href="{{route('home')}}">Home</a>
                       </li>
                       <li>
                         <a href="#">About</a>
@@ -154,6 +154,9 @@
                       </li>
                       <li>
                         <a href="#">Rules</a>
+                      </li>
+                      <li>
+                        <a href="#">Visiting Time</a>
                       </li>
                       <li>
                         <a href="#">Contact</a>

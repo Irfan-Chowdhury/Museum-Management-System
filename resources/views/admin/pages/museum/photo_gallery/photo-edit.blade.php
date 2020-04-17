@@ -20,9 +20,17 @@
             </div>
   
             <div class="form-group">
-              <label for="recipient-name" class="d-flex justify-content-start">Short Description</label>
+              <label for="recipient-name" class="d-flex justify-content-start">About/Quote</label>
               <textarea name="description" class="form-control  @error('description') is-invalid @enderror" rows="3">{{$item->description}}</textarea>
               @error('description')
+                  <div class="text-danger">{{ $message }}</div>
+              @enderror
+            </div>
+            
+            <div class="form-group">
+              <label for="author" class="d-flex justify-content-start">Author [Optional]</label>
+              <input type="text" name="author" class="form-control  @error('author') is-invalid @enderror" value="{{$item->author}}">
+              @error('author')
                   <div class="text-danger">{{ $message }}</div>
               @enderror
             </div>

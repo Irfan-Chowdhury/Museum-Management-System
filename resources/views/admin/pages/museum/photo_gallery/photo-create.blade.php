@@ -20,9 +20,17 @@
           </div>
 
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Short Description</label>
+            <label for="recipient-name" class="col-form-label">About/Quote</label>
             <textarea name="description" class="form-control  @error('description') is-invalid @enderror" rows="3">{{old('description')}}</textarea>
             @error('description')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+          </div>
+
+          <div class="form-group">
+            <label for="author" class="col-form-label">Author [Optional]</label>
+            <input type="text" name="author" class="form-control  @error('author') is-invalid @enderror" value="{{old('author')}}" placeholder="Type Author Name">
+            @error('author')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
           </div>
@@ -45,7 +53,7 @@
           </div>
 
           <div class="form-group mt-3">
-              <label>Upload Image</label><br>
+              <label>Upload Image <strong class="text-danger">*</strong></label><br>
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1gfHk6PkOcBMSZT0o_W2gp9zZ8gE5rGcQrzBAK42y_GiAvpRm&usqp=CAU" height="100px" width="100px" id="photoGallery" required>
               <input type="file" name="photo" class="form-control" onchange="showImage(this,'photoGallery')">
               @error('photo')
