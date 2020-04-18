@@ -59,7 +59,7 @@
   
             <div class="form-group mt-3">
                 <label class="d-flex justify-content-start">Upload Image</label><br>
-                <img src="{{asset($item->photo)}}" class="d-flex justify-content-start" height="100px" width="100px" id="photoGallery" required>
+                <img src="{{asset('/admin/images/photo_gallery/'.$item->photo)}}" class="d-flex justify-content-start" height="100px" width="100px" id="photoGallery" required>
                 <input type="file" name="photo" class="form-control" onchange="showImage(this,'photoGallery')">
                 @error('photo')
                     <div class="text-danger">{{ $message }}</div>

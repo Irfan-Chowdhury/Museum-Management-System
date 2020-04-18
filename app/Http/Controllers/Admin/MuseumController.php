@@ -133,31 +133,43 @@ class MuseumController extends Controller
         $photoGallery->author      = $request->author;
         $photoGallery->type        = $request->type;
 
+        //Image File Handling Start
         if ($request->hasFile('photo')) 
         {
            // --- Image Intervention Start ---
-            $file           = $request->file('photo');
-            $imageName      = time().'.'.$file->getClientOriginalExtension();
-            $directory      = '/admin/images/photo_gallery/';
-            $imageUrl       = $directory.$imageName;
-            $upload_path    = public_path().$imageUrl;
+           $file           = $request->file('photo');
+           $imageName      = time().'.'.$file->getClientOriginalExtension();
+           $directory      = '/admin/images/photo_gallery/';
+           $imageUrl       = $directory.$imageName;
+           $upload_path    = public_path().$imageUrl;
 
-            //photo size according to condition
-            if ($request->type=='slider') 
-            {
-                Image::make($file)->resize(1900,700)->save($upload_path);
-            }
-            elseif($request->type=='about')
-            {
-                Image::make($file)->resize(900,632)->save($upload_path);
-            }
-            else{
-                Image::make($file)->save($upload_path);
-            }
-            // --- Image Intervention End ---
+           //For Showing in Front Gallery during Image Overlay
+           $directory_2      = '/admin/images/photo_gallery/front_gallery_large/';
+           $imageUrl_2       = $directory_2.$imageName;
+           $upload_path_2    = public_path().$imageUrl_2;
 
-            $photoGallery->photo = $imageUrl;
+
+           //photo size according to condition
+           if ($request->type=='slider') 
+           {
+               Image::make($file)->resize(1900,700)->save($upload_path); //Expected Target
+               Image::make($file)->resize(900,632)->save($upload_path_2); //For Showing in Front Gallery during Image Overlay
+           }
+           elseif($request->type=='about')
+           {
+               Image::make($file)->resize(900,632)->save($upload_path);   //Expected Target
+               Image::make($file)->resize(900,632)->save($upload_path_2); //For Showing in Front Gallery during Image Overlay
+           }
+           else{
+               Image::make($file)->save($upload_path);                    //Expected Target
+               Image::make($file)->resize(900,632)->save($upload_path_2); //For Showing in Front Gallery during Image Overlay
+           }
+           // --- Image Intervention End ---
+
+           // $photoGallery->photo = $imageUrl;
+           $photoGallery->photo = $imageName;
         }
+        //Image File Handling End
 
         $photoGallery->save();
 
@@ -191,37 +203,50 @@ class MuseumController extends Controller
         $photoGallery->author      = $request->author;
         $photoGallery->type        = $request->type;
 
+        //Image File Handling Start
         if ($request->hasFile('photo')) 
         {
             //First delete previous image from storage
-            if (File::exists(public_path().$photoGallery->photo)) 
+            if (File::exists(public_path().'/admin/images/photo_gallery/'.$photoGallery->photo))
             {  
-                File::delete(public_path().$photoGallery->photo);
+                File::delete(public_path().'/admin/images/photo_gallery/'.$photoGallery->photo);
+                File::delete(public_path().'/admin/images/photo_gallery/front_gallery_large/'.$photoGallery->photo);
             }
 
-           // --- Image Intervention Start ---
+            // --- Image Intervention Start ---
             $file           = $request->file('photo');
             $imageName      = time().'.'.$file->getClientOriginalExtension();
             $directory      = '/admin/images/photo_gallery/';
             $imageUrl       = $directory.$imageName;
             $upload_path    = public_path().$imageUrl;
 
+            //For Showing in Front Gallery during Image Overlay
+            $directory_2      = '/admin/images/photo_gallery/front_gallery_large/';
+            $imageUrl_2       = $directory_2.$imageName;
+            $upload_path_2    = public_path().$imageUrl_2;
+
+
             //photo size according to condition
             if ($request->type=='slider') 
             {
-                Image::make($file)->resize(1900,700)->save($upload_path);
+                Image::make($file)->resize(1900,700)->save($upload_path); //Expected Target
+                Image::make($file)->resize(900,632)->save($upload_path_2); //For Showing in Front Gallery during Image Overlay
             }
             elseif($request->type=='about')
             {
-                Image::make($file)->resize(900,632)->save($upload_path);
+                Image::make($file)->resize(900,632)->save($upload_path);   //Expected Target
+                Image::make($file)->resize(900,632)->save($upload_path_2); //For Showing in Front Gallery during Image Overlay
             }
             else{
-                Image::make($file)->save($upload_path);
+                Image::make($file)->save($upload_path);                    //Expected Target
+                Image::make($file)->resize(900,632)->save($upload_path_2); //For Showing in Front Gallery during Image Overlay
             }
             // --- Image Intervention End ---
 
-            $photoGallery->photo = $imageUrl;
+            // $photoGallery->photo = $imageUrl;
+            $photoGallery->photo = $imageName;
         }
+        //Image File Handling End
 
         $photoGallery->update();
 
@@ -237,9 +262,10 @@ class MuseumController extends Controller
     {
         $photoGallery = PhotoGallery::find($id);
 
-        if (File::exists(public_path().$photoGallery->photo)) //delete previous image from storage
+        if (File::exists(public_path().'/admin/images/photo_gallery/'.$photoGallery->photo))
         {  
-            File::delete(public_path().$photoGallery->photo);
+            File::delete(public_path().'/admin/images/photo_gallery/'.$photoGallery->photo);
+            File::delete(public_path().'/admin/images/photo_gallery/front_gallery_large/'.$photoGallery->photo);
         }
 
         $photoGallery->delete();

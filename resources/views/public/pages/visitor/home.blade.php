@@ -22,10 +22,9 @@
 
                   <div class="sl-slide-inner">
                       <div class="bg-img">
-                          <img src="{{asset("$item->photo")}}">
+                          <img src="{{asset('/admin/images/photo_gallery/'.$item->photo)}}">
                       </div>
-                      <br><br>
-                      <h2><strong> @if(isset($item->title)) {{$item->title}} @else <br> @endif</strong></h2>
+                      <div style="min-height:300px"></div>
                       <blockquote>
                         <p> <strong> {{$item->description}} </strong> </p>
                         <cite>{{$item->author}}</cite>

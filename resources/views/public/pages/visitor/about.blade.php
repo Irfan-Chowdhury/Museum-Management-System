@@ -37,7 +37,7 @@
                     <ul class="slides">
                         @foreach ($photos as $item)
                             <li>
-                                <img src="{{asset($item->photo)}}" alt="" />
+                                <img src="{{asset('/admin/images/photo_gallery/'.$item->photo)}}" alt="" />
                             </li>
                         @endforeach
                     </ul>

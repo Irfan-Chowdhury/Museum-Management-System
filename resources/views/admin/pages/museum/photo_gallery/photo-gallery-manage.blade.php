@@ -44,7 +44,7 @@
                                 @foreach ($photoGalleries as $key => $item)                                    
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
-                                        <td class="text-center"><img src="{{asset("$item->photo")}}" height="60px" width="80px" alt="" srcset=""></td>
+                                        <td class="text-center"><img src="{{asset('/admin/images/photo_gallery/'.$item->photo)}}" height="60px" width="80px" alt="" srcset=""></td>
                                         <td> @if(isset($item->title))       {{Str::limit($item->title,15,' ...')}}       @else NULL @endif</td>
                                         <td> @if(isset($item->description)) {{Str::limit($item->description,15,' ...')}} @else NULL @endif</td>
                                         <td> @if(isset($item->author))      {{Str::limit($item->author,15,' ...')}}      @else NULL @endif</td>

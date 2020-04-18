@@ -122,5 +122,8 @@ Route::group(['namespace'=>'Front\Visitor'], function () {
 
     Route::get('/','VisitorController@home')->name('home');
     Route::get('/about','VisitorController@about')->name('about');
+    // Route::get('/front/about','VisitorController@about')->name('front.about');
+    Route::get('/gallery','VisitorController@gallery')->name('gallery');
+    
 });
 

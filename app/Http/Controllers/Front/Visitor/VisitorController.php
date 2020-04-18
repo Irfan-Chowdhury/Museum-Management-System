@@ -28,4 +28,12 @@ class VisitorController extends Controller
         // return $museum;
         return view('public.pages.visitor.about',compact('museum','photos'));
     }
+
+    public function gallery()
+    {
+        $photos = PhotoGallery::where('status','=','published')
+                                ->get();
+
+        return view('public.pages.visitor.gallery',compact('photos'));
+    }
 }

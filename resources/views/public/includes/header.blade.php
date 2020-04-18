@@ -140,14 +140,41 @@
                   <nav>
                     <ul class="nav topnav">
 
-                      <li class="active">
+                      <!-- ================ By Route URL ============== -->
+
+                      {{-- <li class="{{ Request::is('/') ? 'active' : '' }}">
+                        <a href="{{route('home')}}">Home</a>
+                      </li>
+                      <li class="{{ Request::is('front/about') ? 'active' : '' }}">
+                        <a href="{{route('about')}}">About</a>
+                      </li> --}}
+                     
+                      <!-- ================ By Route Name -1 ============== -->
+
+                      {{-- <li class="{{ Route::is('home') ? 'active' : '' }}">
+                        <a href="{{route('home')}}">Home</a>
+                      </li>
+                      <li class="{{ Route::is('front.about') ? 'active' : '' }}">
+                        <a href="{{route('front.about')}}">About</a>
+                      </li> --}}
+
+                      <!-- ================ By Route Name -2 ============== -->
+
+                      {{-- <li class="{{ Route::currentRouteNamed('home') ? 'active' : ''}}">
+                        <a href="{{route('home')}}">Home1</a>
+                      </li>
+                      <li class="{{ Route::currentRouteNamed('front.about') ? 'active' : ''}}">
+                        <a href="{{route('front.about')}}">About1</a>
+                      </li> --}}
+
+                      <li>
                         <a href="{{route('home')}}">Home</a>
                       </li>
                       <li>
                         <a href="{{route('about')}}">About</a>
                       </li>
                       <li>
-                        <a href="#">Gallery</a>
+                        <a href="{{route('gallery')}}">Gallery</a>
                       </li>
                       <li>
                         <a href="#">Notice</a>
