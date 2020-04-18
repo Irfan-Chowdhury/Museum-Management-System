@@ -30,6 +30,13 @@
   <link rel="apple-touch-icon-precomposed" href="{{asset('public/ico/apple-touch-icon-57-precomposed.png')}}" />
   <link rel="shortcut icon" href="{{asset('public/ico/favicon.png')}}" />
 
+  <style>
+    .pagination {
+      text-align:center; 
+      list-style: none; 
+      padding-left: 0;
+    }
+  </style>
   <!-- =======================================================
     Theme Name: Flattern
     Theme URL: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/

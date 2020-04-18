@@ -177,7 +177,7 @@
                         <a href="{{route('gallery')}}">Gallery</a>
                       </li>
                       <li>
-                        <a href="#">Notice</a>
+                        <a href="{{route('notice')}}">Notice</a>
                       </li>
                       <li>
                         <a href="#">Rules</a>

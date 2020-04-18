@@ -46,7 +46,7 @@ class NoticeController extends Controller
             $imageUrl       = $directory.$imageName;
             $upload_path     = public_path().$imageUrl;
             // $upload_path       = public_path($imageUrl); //Move the Product Image into the required folder
-            Image::make($file)->resize(300,300)->save($upload_path);
+            Image::make($file)->resize(870,350)->save($upload_path);
             
             // --- Image Intervention End ---
 
@@ -110,7 +110,7 @@ class NoticeController extends Controller
             $imageUrl       = $directory.$imageName;
             $upload_path    = public_path().$imageUrl;
             // $upload_path       = public_path($imageUrl); //Move the Product Image into the required folder
-            Image::make($file)->resize(300,300)->save($upload_path);
+            Image::make($file)->resize(870,350)->save($upload_path);
             
             // --- Image Intervention End ---
             

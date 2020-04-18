@@ -113,4 +113,6 @@ class VisitorController extends Controller
         
         return redirect()->back();
     }
+
+    
 }
