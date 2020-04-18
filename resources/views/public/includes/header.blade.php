@@ -180,7 +180,7 @@
                         <a href="{{route('notice')}}">Notice</a>
                       </li>
                       <li>
-                        <a href="#">Rules</a>
+                        <a href="{{route('rule')}}">Rules</a>
                       </li>
                       <li>
                         <a href="#">Visiting Time</a>

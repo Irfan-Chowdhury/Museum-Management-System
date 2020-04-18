@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Descrition</label>
-                                        <textarea name="description" class="textarea @error('description') is-invalid @enderror"></textarea>
+                                        <textarea name="description" rows="5" class="form-control @error('description') is-invalid @enderror"></textarea>
                                         @error('description')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror

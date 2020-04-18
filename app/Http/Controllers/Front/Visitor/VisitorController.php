@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PhotoGallery;
 use App\Models\Museum;
 use App\Models\Notice;
+use App\Models\Rule;
 
 class VisitorController extends Controller
 {
@@ -59,4 +60,14 @@ class VisitorController extends Controller
 
         return view('public.pages.visitor.notice-read',compact('notice','notices'));
     }
+
+    public function rule()
+    {
+        $reules = Rule::where('status','published')
+                        ->orderBy('id','DESC')
+                        ->get();
+        
+        return view('public.pages.visitor.rule',compact('reules'));
+    }
+
 }

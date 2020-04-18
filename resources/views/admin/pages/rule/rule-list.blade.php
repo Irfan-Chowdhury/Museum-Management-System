@@ -41,7 +41,8 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>{{Str::limit($rule->title,20,' ...')}}</td> <!--String Limit type-1 [can't convert html to string]-->
-                                        <td>{{substr(strip_tags($rule->description), 0, 35)}} ...</td> <!--String Limit type-2 [it can convert html to string]-->
+                                        <td>{{Str::limit($rule->description,35,' ...')}}</td> 
+                                        {{-- <td>{{substr(strip_tags($rule->description), 0, 35)}} ...</td> <!--String Limit type-2 [it can convert html to string]--> --}}
                                         <td>{{$rule->status}}</td>
                                         <td>
                                             @if ($rule->status == 'published')

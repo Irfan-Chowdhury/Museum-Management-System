@@ -55,7 +55,7 @@
                                     
                                     <div class="form-group">
                                         <label for="">Description</label>
-                                        <textarea name="description" class="textarea @error('description') is-invalid @enderror">{{$rule->description}}</textarea>
+                                        <textarea name="description" rows="5" class="form-control @error('description') is-invalid @enderror">{{$rule->description}}</textarea>
                                         @error('description')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
