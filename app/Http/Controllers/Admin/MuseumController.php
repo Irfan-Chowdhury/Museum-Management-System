@@ -26,7 +26,8 @@ class MuseumController extends Controller
             'museum_name'    => 'required|string|max:50',
             'description'    => 'required',
             'address'        => 'required',
-            'late_long'      => 'required',
+            'phone'          => 'required|max:11|min:11',
+            'map'            => 'required',
         ]);
 
         if($validator->fails())
@@ -39,7 +40,8 @@ class MuseumController extends Controller
         $museum->museum_name    = $request->museum_name;
         $museum->description    = $request->description;
         $museum->address        = $request->address;
-        $museum->late_long      = $request->late_long;
+        $museum->phone          = $request->phone;
+        $museum->map            = $request->map;      
 
         $museum->save();
 
@@ -76,7 +78,8 @@ class MuseumController extends Controller
         $museum->museum_name    = $request->museum_name;
         $museum->description    = $request->description;
         $museum->address        = $request->address;
-        $museum->late_long      = $request->late_long;
+        $museum->phone          = $request->phone;
+        $museum->map            = $request->map      ;
 
         $museum->update();
 

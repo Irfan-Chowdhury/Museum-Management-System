@@ -98,6 +98,9 @@
   <!-- Template Custom JavaScript File -->
   <script src="{{asset('public/js/custom.js')}}"></script>
 
+  <!-- Contact Form JavaScript File -->
+  <script src="{{asset('public/contactform/contactform.js')}}"></script>
+  
 </body>
 
 </html>

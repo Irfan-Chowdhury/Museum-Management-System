@@ -6,12 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PhotoGallery;
 use App\Models\Schedule;
+use App\Models\Message;
 use App\Models\Museum;
 use App\Models\Notice;
 use App\Models\Rule;
 
 class VisitorController extends Controller
 {
+    // public function header()
+    // {
+    //     $museum = Museum::all();
+    //     return view('public.layouts.public-master',compact('museum'));
+    // }
+    
     public function home()
     {
         $photos = PhotoGallery::where('type','=','slider')
@@ -76,6 +83,28 @@ class VisitorController extends Controller
         $schedules = Schedule::all();
 
         return view('public.pages.visitor.schedule',compact('schedules'));
+    }
+
+    public function contact()
+    {
+        $museum = Museum::get()->first();
+
+        return view('public.pages.visitor.contact',compact('museum'));
+    }
+
+    public function message_visitor_save(Request $request)
+    {
+        $message          = new Message();
+        $message->name    = $request->name; 
+        $message->email   = $request->email; 
+        $message->subject = $request->subject; 
+        $message->message = $request->message; 
+        $message->type    = 'visitor'; 
+        $message->save();
+        
+        session()->flash('message','Message Sent Successfully.');
+        
+        return redirect()->back();
     }
 
 }

@@ -120,6 +120,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
 
 Route::group(['namespace'=>'Front\Visitor'], function () {
 
+    // Route::get('/','VisitorController@header');
     Route::get('/','VisitorController@home')->name('home');
     Route::get('/about','VisitorController@about')->name('about');
     // Route::get('/front/about','VisitorController@about')->name('front.about');
@@ -128,6 +129,7 @@ Route::group(['namespace'=>'Front\Visitor'], function () {
     Route::get('/notice/{id}','VisitorController@notice_read')->name('notice.read');
     Route::get('/rule','VisitorController@rule')->name('rule');
     Route::get('/schedule','VisitorController@schedule')->name('schedule');
-    
+    Route::get('/contact','VisitorController@contact')->name('contact');
+    Route::post('/message-visitor-save','VisitorController@message_visitor_save')->name('message-visitor-save');
 });
 

@@ -66,9 +66,16 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Late Long</label>
-                                        <input type="text" name="late_long" class="form-control @error('late_long') is-invalid @enderror">
-                                        @error('late_long')
+                                        <label for="">Phone</label>
+                                        <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" id="" placeholder="Type Phone Number">
+                                        @error('phone')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Map</label>
+                                        <textarea name="map" class="form-control @error('map') is-invalid @enderror" rows="3"></textarea>
+                                        @error('map')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

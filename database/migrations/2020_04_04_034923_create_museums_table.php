@@ -19,7 +19,8 @@ class CreateMuseumsTable extends Migration
             $table->string('museum_name'); 
             $table->longText('description')->nullable();
             $table->text('address');
-            $table->text('late_long');
+            $table->string('phone');
+            $table->text('map');
             $table->timestamps();
         });
     }

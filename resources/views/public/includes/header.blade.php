@@ -4,9 +4,12 @@
           <div class="row">
             <div class="span12">
               <ul>
-                <li><strong>We are available for any custom works this month</strong></li>
-                <li>Main office: Springville center X264, Park Ave S.01</li>
-                <li>Call us <i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891</li>
+                <li><strong>We are available for any custom works</strong></li>
+                {{-- @foreach ($museum as $item) --}}
+                  <li>Main office: Springville center X264, Park Ave S.01</li>
+                  {{-- <li>{{$item->address}}</li> --}}
+                  <li>Call us <i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891</li>
+                {{-- @endforeach --}}
               </ul>
             </div>
           </div>
@@ -186,7 +189,7 @@
                         <a href="{{route('schedule')}}">Visiting Time</a>
                       </li>
                       <li>
-                        <a href="#">Contact</a>
+                        <a href="{{route('contact')}}">Contact</a>
                       </li>
                       <li>
                         <a href="#">Donation</a>

@@ -33,6 +33,7 @@
                                 <th>Museum Name</th>
                                 <th>About Museum</th>
                                 <th>Address</th>
+                                <th>Phone</th>
                                 <th>Late Long</th>
                                 <th>Action</th>
                             </tr>
@@ -41,11 +42,12 @@
                                                              
                                 <tr>
                                     <td>1</td>
-                                    <td class="text-center">{{$museum->museum_name}}</td> <!--String Limit type-1 [can't convert html to string]-->
+                                    <td class="text-center">{{$museum->museum_name}}</td>
                                     <td>{{substr(strip_tags($museum->description), 0, 20)}}</td><!--String Limit type-2 [it can convert html to string]-->
                                     <td>{{Str::limit($museum->address,20,' ...')}}</td>
-                                    <td><a href="{{$museum->late_long}}" target="_blank">Click Here</a></td>
-                                    <td>
+                                    <td class="text-center">{{$museum->phone}}</td>
+                                    <td class="text-center"><a href="{{$museum->map}}" target="_blank">Click Here</a></td>
+                                    <td class="text-center">
                                         <a href="{{route('museum-edit',$museum->id)}}" class="m-1 btn btn-info fa fa-edit" title="Edit"></a>
                                     </td>
                                 </tr>
