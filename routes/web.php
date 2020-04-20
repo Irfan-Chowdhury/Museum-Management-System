@@ -118,7 +118,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
 
 // ==================== Public =================
 
-Route::group(['namespace'=>'Front\Visitor'], function () {
+Route::group(['namespace'=>'Front'], function () {
 
     // Route::get('/','VisitorController@header');
     Route::get('/','VisitorController@home')->name('home');
@@ -131,5 +131,19 @@ Route::group(['namespace'=>'Front\Visitor'], function () {
     Route::get('/schedule','VisitorController@schedule')->name('schedule');
     Route::get('/contact','VisitorController@contact')->name('contact');
     Route::post('/message-visitor-save','VisitorController@message_visitor_save')->name('message-visitor-save');
+
+    //Donation
+    Route::group(['prefix' => 'donation'], function () {
+        Route::get('/donation-create','DonationController@donation_create')->name('donation-create');
+        Route::post('/donation-save','DonationController@donation_save')->name('donation-save');
+        Route::get('/donation-list','DonationController@donation_list')->name('donation-list');
+        Route::get('/donation-edit/{id}','DonationController@donation_edit')->name('donation-edit');
+        Route::post('/donation-update/{id}','DonationController@donation_update')->name('donation-update');
+
+        Route::get('/donation-image-delete/{id}','DonationController@donation_image_delete')->name('donation-image-delete');
+        Route::post('/donation-image-save/{id}','DonationController@donation_image_save')->name('donation-image-save');
+        
+        Route::get('/donation-delete/{id}','DonationController@donation_delete')->name('donation-delete');
+    });
 });
 

@@ -191,10 +191,13 @@
                       <li>
                         <a href="{{route('contact')}}">Contact</a>
                       </li>
-                      <li>
-                        <a href="#">Donation</a>
+                      <li class="dropdown">
+                        <a href="#">Donation <i class="icon-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{{route('donation-create')}}">Add New Donation</a></li>
+                          <li><a href="{{route('donation-list')}}">Donation Info List</a></li>
+                        </ul>
                       </li>
-
                     </ul>
                   </nav>
                 </div>

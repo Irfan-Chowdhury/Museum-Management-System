@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front\Visitor;
+namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -106,5 +106,4 @@ class VisitorController extends Controller
         
         return redirect()->back();
     }
-
 }
