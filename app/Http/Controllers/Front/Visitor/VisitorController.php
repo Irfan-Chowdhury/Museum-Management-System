@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Visitor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PhotoGallery;
+use App\Models\Schedule;
 use App\Models\Museum;
 use App\Models\Notice;
 use App\Models\Rule;
@@ -68,6 +69,13 @@ class VisitorController extends Controller
                         ->get();
         
         return view('public.pages.visitor.rule',compact('reules'));
+    }
+
+    public function schedule()
+    {
+        $schedules = Schedule::all();
+
+        return view('public.pages.visitor.schedule',compact('schedules'));
     }
 
 }

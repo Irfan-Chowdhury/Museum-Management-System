@@ -183,7 +183,7 @@
                         <a href="{{route('rule')}}">Rules</a>
                       </li>
                       <li>
-                        <a href="#">Visiting Time</a>
+                        <a href="{{route('schedule')}}">Visiting Time</a>
                       </li>
                       <li>
                         <a href="#">Contact</a>

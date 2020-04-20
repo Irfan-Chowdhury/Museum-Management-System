@@ -127,6 +127,7 @@ Route::group(['namespace'=>'Front\Visitor'], function () {
     Route::get('/notice','VisitorController@notice')->name('notice');
     Route::get('/notice/{id}','VisitorController@notice_read')->name('notice.read');
     Route::get('/rule','VisitorController@rule')->name('rule');
+    Route::get('/schedule','VisitorController@schedule')->name('schedule');
     
 });
 
