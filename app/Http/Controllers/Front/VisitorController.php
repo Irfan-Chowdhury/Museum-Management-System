@@ -143,6 +143,7 @@ class VisitorController extends Controller
             $message->save();    
         }
         
+        session()->flash('success','');
         session()->flash('message','Your message has been sent. Thank you!');
         
         return redirect()->back();

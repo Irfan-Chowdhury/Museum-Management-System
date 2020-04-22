@@ -14,7 +14,7 @@ use File;
 use DB;
 // use Illuminate\Support\Facades\Session;
 
-Session_start();
+//Session_start();
 
 class UserController extends Controller
 {
@@ -89,8 +89,8 @@ class UserController extends Controller
     public function userLogin(Request $request)
     {
         $validator= Validator::make($request->all(),[
-            'name'     => 'required|string|email',
-            'password'  => 'required',
+            'email'    => 'required|string|email',
+            'password' => 'required|min:8',
         ]);
 
         if($validator->fails())

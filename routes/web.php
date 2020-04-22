@@ -125,14 +125,19 @@ Route::group(['namespace'=>'Front'], function () {
     Route::get('/about','VisitorController@about')->name('about');
     // Route::get('/front/about','VisitorController@about')->name('front.about');
     Route::get('/gallery','VisitorController@gallery')->name('gallery');
-    Route::get('/notice','VisitorController@notice')->name('notice');
-    Route::get('/notice/{id}','VisitorController@notice_read')->name('notice.read');
-    Route::get('/rule','VisitorController@rule')->name('rule');
-    Route::get('/schedule','VisitorController@schedule')->name('schedule');
     Route::get('/contact','VisitorController@contact')->name('contact');
     Route::post('/message-visitor-save','VisitorController@message_visitor_save')->name('message-visitor-save');
-    Route::get('/item-info','VisitorController@item_info')->name('item-info');
 
+
+    //Others
+    Route::group(['prefix' => 'others'], function () {
+        Route::get('/notice','VisitorController@notice')->name('notice');
+        Route::get('/notice/{id}','VisitorController@notice_read')->name('notice.read');
+        Route::get('/rule','VisitorController@rule')->name('rule');
+        Route::get('/schedule','VisitorController@schedule')->name('schedule');
+        Route::get('/item-info','VisitorController@item_info')->name('item-info');
+    });
+    
     //Donation
     Route::group(['prefix' => 'donation'], function () {
         Route::get('/donation-create','DonationController@donation_create')->name('donation-create');
@@ -147,9 +152,8 @@ Route::group(['namespace'=>'Front'], function () {
         Route::get('/donation-delete/{id}','DonationController@donation_delete')->name('donation-delete');
     });
 
-    //User Registration
+    //User
     Route::group(['prefix' => 'user'], function () {
-        
         Route::post('/user-registration','UserController@userRegistration')->name('user-registration');
         Route::post('/user-login','UserController@userLogin')->name('user-login');
         Route::get('/user-logout','UserController@userLogout')->name('user-logout');

@@ -253,41 +253,38 @@
                         <a href="{{route('front.about')}}">About1</a>
                       </li> --}}
 
-                      <li>
+                      <li class="{{ Route::currentRouteNamed('home') ? 'active' : ''}}">
                         <a href="{{route('home')}}">Home</a>
                       </li>
-                      <li>
+                      <li class="{{ Route::currentRouteNamed('about') ? 'active' : ''}}">
                         <a href="{{route('about')}}">About</a>
                       </li>
-                      <li>
+                      <li class="{{ Route::currentRouteNamed('gallery') ? 'active' : ''}}">
                         <a href="{{route('gallery')}}">Gallery</a>
                       </li>
-                      <li>
+                      <li class="{{ Route::currentRouteNamed('contact') ? 'active' : ''}}">
                         <a href="{{route('contact')}}">Contact</a>
                       </li>
 
                       <!-- Loggin Check Start  -->
                       @if (Auth::check())
-                          <li>
-                            <a href="{{route('notice')}}">Notice</a>
-                          </li>
-                          <li>
-                            <a href="{{route('rule')}}">Rules</a>
-                          </li>
-                          <li>
-                            <a href="{{route('schedule')}}">Visiting Time</a>
-                          </li>
-                          <li>
-                            <a href="{{route('item-info')}}">Item Info</a>
-                          </li>
-                          <li class="dropdown">
+                          <li class="dropdown {{ Request::is('donation*') ? 'active' : '' }}"> <!--By Url-->
                             <a href="#">Donation <i class="icon-angle-down"></i></a>
                             <ul class="dropdown-menu">
                               <li><a href="{{route('donation-create')}}">Add New Donation</a></li>
                               <li><a href="{{route('donation-list')}}">Donation Info List</a></li>
                             </ul>
                           </li>
-                          <li class="dropdown">
+                          <li class="dropdown {{ Request::is('others*') ? 'active' : '' }}">
+                            <a href="#">Others<i class="icon-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="{{route('notice')}}">Notice</a></li>
+                              <li><a href="{{route('rule')}}">Rules</a></li>
+                              <li><a href="{{route('schedule')}}">Visiting Time</a></li>
+                              <li><a href="{{route('item-info')}}">Item Info</a></li>
+                            </ul>
+                          </li>
+                          <li class="dropdown {{ Request::is('user*') ? 'active' : '' }}">
                             <a href="#"> {{Auth::user()->name}} <i class="icon-angle-down"></i></a>
                             <ul class="dropdown-menu">
                               <li><a href="{{route('user-profile')}}">Profile</a></li>
