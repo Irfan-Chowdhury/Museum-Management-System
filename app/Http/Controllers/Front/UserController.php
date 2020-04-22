@@ -89,7 +89,7 @@ class UserController extends Controller
     public function userLogin(Request $request)
     {
         $validator= Validator::make($request->all(),[
-            'email'     => 'required|string|email',
+            'name'     => 'required|string|email',
             'password'  => 'required',
         ]);
 
@@ -106,7 +106,8 @@ class UserController extends Controller
             // Authentication passed...
             
             session()->flash('success','');
-            session()->flash('message','You are now logged in.');
+            session()->flash('welcome','Welcome');
+            session()->flash('message','You are logged in now.');
             return redirect()->back();
         }
 

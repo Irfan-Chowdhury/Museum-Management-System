@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PhotoGallery;
@@ -11,6 +12,7 @@ use App\Models\Museum;
 use App\Models\Notice;
 use App\Models\Rule;
 use App\Models\Item;
+use Auth;
 use DB;
 
 class VisitorController extends Controller
@@ -96,15 +98,52 @@ class VisitorController extends Controller
 
     public function message_visitor_save(Request $request)
     {
-        $message          = new Message();
-        $message->name    = $request->name; 
-        $message->email   = $request->email; 
-        $message->subject = $request->subject; 
-        $message->message = $request->message; 
-        $message->type    = 'visitor'; 
-        $message->save();
+        if (Auth::check()==TRUE) 
+        {
+            $validator= Validator::make($request->all(),[
+                // 'name'      => 'required|string',
+                // 'email'     => 'required|string|email',
+                'subject'   => 'required|string',
+                'message'   => 'required|string',
+            ]);
+        }
+        else{
+            $validator= Validator::make($request->all(),[
+                'name'      => 'required|string',
+                'email'     => 'required|string|email',
+                'subject'   => 'required|string',
+                'message'   => 'required|string',
+            ]);
+        }
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+
+
+        $message = new Message();
+
+        if (Auth::check()==false) 
+        {
+            $message->name    = $request->name; 
+            $message->email   = $request->email; 
+            $message->subject = $request->subject; 
+            $message->message = $request->message; 
+            $message->type    = 'visitor'; 
+            $message->save();
+        }
+        else 
+        {
+            $message->user_id = Auth::user()->id; 
+            $message->subject = $request->subject; 
+            $message->message = $request->message; 
+            $message->type    = 'user'; 
+            $message->save();    
+        }
         
-        session()->flash('message','Message Sent Successfully.');
+        session()->flash('message','Your message has been sent. Thank you!');
         
         return redirect()->back();
     }

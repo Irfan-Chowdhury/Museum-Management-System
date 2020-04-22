@@ -99,7 +99,7 @@
   <script src="{{asset('public/js/custom.js')}}"></script>
 
   <!-- Contact Form JavaScript File -->
-  <script src="{{asset('public/contactform/contactform.js')}}"></script>
+  {{-- <script src="{{asset('public/contactform/contactform.js')}}"></script> --}}
 
    <!-- Photo show after select any photo file-->
    <script src="{{asset('admin/js/style.js')}}"></script>

@@ -309,6 +309,7 @@
       </header>
       <!-- end header -->
 
+      {{-- =================================== Session Message ============================= --}}
       @if (session()->has('error'))
         <div class="row">
           <div class="span4"></div>
@@ -320,7 +321,7 @@
         <div class="row">
           <div class="span4"></div>
           <div class="span6">
-            <h6 style="color:green"><strong>Congratulation !!</strong> {{ session('message') }}</h6>
+            <h6 style="color:green"><strong> @if(session()->has('welcome')) {{ session('welcome') }} @else Congratulation !!  @endif</strong> {{ session('message') }}</h6>
           </div>
         </div>
       @endif
