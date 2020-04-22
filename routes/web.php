@@ -156,6 +156,8 @@ Route::group(['namespace'=>'Front'], function () {
         Route::get('/user-profile','UserController@userProfile')->name('user-profile');
         Route::get('/user-profile-edit','UserController@userProfileEdit')->name('user-profile-edit');
         Route::post('/user-profile-update','UserController@userProfileUpdate')->name('user-profile-update');
+        Route::get('/user-password-change','UserController@userPasswordChange')->name('user-password-change');
+        Route::post('/password-change-update','UserController@passwordChangeUpdate')->name('password-change-update');
     });
 });
 

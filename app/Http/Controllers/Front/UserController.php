@@ -33,8 +33,8 @@ class UserController extends Controller
 
         if($validator->fails())
         {
-            session()->flash('error','');
-            session()->flash('message','Something wrong . Please try again');
+            session()->flash('error',''); //This line for Modal
+            session()->flash('message','Something wrong . Please try again'); //This line for Modal
 
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -191,5 +191,46 @@ class UserController extends Controller
         session()->flash('message','Profile Updated Successful.');
         
         return redirect()->back();
+    }
+
+    public function userPasswordChange()
+    {
+        return view('public.pages.user.password-change');
+    }
+
+    public function passwordChangeUpdate(Request $request)
+    {
+        $validator= Validator::make($request->all(),[
+            'old_password'          => 'required',
+            'new_password'          => 'required|min:8',
+            'password_confirmation' => 'required|same:new_password',
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // $id = Auth::user()->id;
+        // $user = User::find($id);
+        $user = Auth::user();
+        
+        if (Hash::check($request->old_password, $user->password)) //'$request->old_password' - user old password that has been entered on the form || '$user->password' - old password which have already stored in database
+        {
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+
+            session()->flash('success_password','');
+            session()->flash('message','Password Changed Successfully.');
+            
+            return redirect()->back();
+        }
+        else 
+        {
+            session()->flash('error_password','');
+            session()->flash('message','Password does not match. Please try again');
+            
+            return redirect()->back();
+        }
     }
 }

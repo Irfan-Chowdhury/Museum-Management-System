@@ -291,6 +291,7 @@
                             <a href="#"> {{Auth::user()->name}} <i class="icon-angle-down"></i></a>
                             <ul class="dropdown-menu">
                               <li><a href="{{route('user-profile')}}">Profile</a></li>
+                              <li><a href="{{route('user-password-change')}}">Change Password</a></li>
                               <li><a href="{{route('user-logout')}}">Logout</a></li>
                             </ul>
                           </li>
