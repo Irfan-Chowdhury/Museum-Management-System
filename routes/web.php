@@ -131,6 +131,7 @@ Route::group(['namespace'=>'Front'], function () {
     Route::get('/schedule','VisitorController@schedule')->name('schedule');
     Route::get('/contact','VisitorController@contact')->name('contact');
     Route::post('/message-visitor-save','VisitorController@message_visitor_save')->name('message-visitor-save');
+    Route::get('/item-info','VisitorController@item_info')->name('item-info');
 
     //Donation
     Route::group(['prefix' => 'donation'], function () {
@@ -155,3 +156,6 @@ Route::group(['namespace'=>'Front'], function () {
     });
 });
 
+
+//Multiple Authentication
+//https://medium.com/@sagarmaheshwary31/laravel-multiple-guards-authentication-setup-and-login-2761564da986

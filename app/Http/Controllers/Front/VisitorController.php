@@ -10,6 +10,8 @@ use App\Models\Message;
 use App\Models\Museum;
 use App\Models\Notice;
 use App\Models\Rule;
+use App\Models\Item;
+use DB;
 
 class VisitorController extends Controller
 {
@@ -105,5 +107,19 @@ class VisitorController extends Controller
         session()->flash('message','Message Sent Successfully.');
         
         return redirect()->back();
+    }
+
+    public function item_info(Request $request)
+    {
+        $items = DB::table('items')
+                ->select('category_name','store_direction','items.item_name')
+                ->join('categories','categories.id','=','items.category_id')
+                ->orderBy('categories.store_direction','ASC')
+                ->paginate(10);
+                // ->get();
+
+        // $items = Item::with('category')->orderBy('store_direction','ASC')->get();
+
+        return view('public.pages.visitor.item-info',compact('items'));
     }
 }

@@ -277,6 +277,9 @@
                           <li>
                             <a href="{{route('schedule')}}">Visiting Time</a>
                           </li>
+                          <li>
+                            <a href="{{route('item-info')}}">Item Info</a>
+                          </li>
                           <li class="dropdown">
                             <a href="#">Donation <i class="icon-angle-down"></i></a>
                             <ul class="dropdown-menu">
