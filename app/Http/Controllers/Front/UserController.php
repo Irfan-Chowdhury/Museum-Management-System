@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Redirect,Response,Auth;
 use Session;
-
 use Image;
 use File;
 use DB;
@@ -58,9 +57,26 @@ class UserController extends Controller
         Image::make($file)->resize(300,300)->save($upload_path);
         
         // --- Image Intervention End ---
-
         $user->photo = $imageUrl;
         $user->save();
+
+
+        // ----------- User Id No Generate Start --------
+
+        $last_data  = User::latest()->first(); //Catch th last row's data
+
+        $timestamp = strtotime($last_data->created_at); // the 'created_at' will make full string formate
+        
+        $year = date('y', $timestamp); //take the last digit of year (like 20). if you want to take full length like 2020 type 'Y' replace of the 'y'
+        $month = date('m', $timestamp); // number of month like-  April = 04
+
+        $year_month = 'MU-'.$year.$month.$last_data->id; // "MU-" = Just a String || "$year" = 20 (last digit of year) || "$month" = number of month like-  April = 04 || "$data->id" the id of database row which you saved || M=Museum, U=User
+
+        $last_data->user_id_no = $year_month; // Example:  'MV-200401' || MV- string || 20=Year || 04=April || 01 = id of database (row) 
+        $last_data->update();
+
+        // ----------- User Id No Generate End --------
+
 
         session()->flash('success','');
         session()->flash('message','Registration Successful.');
@@ -108,4 +124,72 @@ class UserController extends Controller
     }
 
 
+    public function userProfile()
+    {
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+        return view('public.pages.user.profile.user-profile',compact('user'));
+    }
+
+    public function userProfileEdit()
+    {
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+        return view('public.pages.user.profile.user-profile-edit',compact('user'));
+    }
+
+
+    public function userProfileUpdate(Request $request)
+    {
+        //--------------------------- validation -----------------------------
+        $validator= Validator::make($request->all(),[
+            'name'      => 'required|string|max:255',
+            'phone'     => 'required',
+            'address'   => 'required',
+            'photo'     => 'image|max:10240',
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+        $user->name    = $request->name;
+        $user->phone   = $request->phone;
+        $user->address = $request->address;
+
+        if ($request->hasFile('photo')) 
+        {
+            if (File::exists(public_path().$user->photo)) //delete previous image from storage
+            {  
+                File::delete(public_path().$user->photo);
+            }
+
+           // --- Image Intervention Start ---
+            $file           = $request->file('photo');
+            $imageName      = time().'.'.$file->getClientOriginalExtension();
+            $directory      = '/public/images/user/';
+            $imageUrl       = $directory.$imageName;
+            $upload_path     = public_path().$imageUrl;
+            Image::make($file)->resize(300,300)->save($upload_path);
+            
+            // --- Image Intervention End ---
+
+            $user->photo = $imageUrl;
+        }
+
+        $user->save();
+
+
+        session()->flash('success_profile','');
+        session()->flash('message','Profile Updated Successful.');
+        
+        return redirect()->back();
+    }
 }

@@ -153,6 +153,9 @@ Route::group(['namespace'=>'Front'], function () {
         Route::post('/user-registration','UserController@userRegistration')->name('user-registration');
         Route::post('/user-login','UserController@userLogin')->name('user-login');
         Route::get('/user-logout','UserController@userLogout')->name('user-logout');
+        Route::get('/user-profile','UserController@userProfile')->name('user-profile');
+        Route::get('/user-profile-edit','UserController@userProfileEdit')->name('user-profile-edit');
+        Route::post('/user-profile-update','UserController@userProfileUpdate')->name('user-profile-update');
     });
 });
 
