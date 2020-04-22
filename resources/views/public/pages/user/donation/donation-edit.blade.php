@@ -177,7 +177,7 @@
                         <tr>
                             <td style="text-align:center">{{$key+1}}</td>
                             <td style="text-align:center">
-                                <img src="{{asset('public/donation-image/'.$item->photo)}}" alt="" srcset="" height="50%" width="50%">
+                                <img src="{{asset('public/images/donation/'.$item->photo)}}" alt="" srcset="" height="50%" width="50%">
                             </td>
                             <td style="text-align:center">
                                 <a href="{{route('donation-image-delete',$item->id)}}" title="Delete" onclick="return confirm('Are You Sure to delete ?')" class="btn btn-danger">Delete</a>

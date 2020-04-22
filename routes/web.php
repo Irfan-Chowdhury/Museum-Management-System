@@ -145,5 +145,13 @@ Route::group(['namespace'=>'Front'], function () {
         
         Route::get('/donation-delete/{id}','DonationController@donation_delete')->name('donation-delete');
     });
+
+    //User Registration
+    Route::group(['prefix' => 'user'], function () {
+        
+        Route::post('/user-registration','UserController@userRegistration')->name('user-registration');
+        Route::post('/user-login','UserController@userLogin')->name('user-login');
+        Route::get('/user-logout','UserController@userLogout')->name('user-logout');
+    });
 });
 

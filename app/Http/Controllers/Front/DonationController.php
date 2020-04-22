@@ -10,6 +10,7 @@ use App\Models\Donation;
 use App\Models\DonationImage;
 use Image;
 use File;
+use Auth;
 
 class DonationController extends Controller
 {
@@ -33,7 +34,7 @@ class DonationController extends Controller
         }
 
         $donation = new Donation();
-        $donation->user_id     = 50; //will be change later
+        $donation->user_id     = Auth::user()->id;
         $donation->item_name   = $request->item_name;
         $donation->description = $request->description;
         $donation->save();
@@ -48,7 +49,7 @@ class DonationController extends Controller
                 $img   = Str::random(10). '.' .$image->getClientOriginalExtension();
     
                 //Move the Product Image into the required folder
-                $location = public_path('public/donation-image/'.$img);
+                $location = public_path('public/images/donation/'.$img);
                 Image::make($image)->resize(300,300)->save($location);
 
     
@@ -69,7 +70,7 @@ class DonationController extends Controller
     public function donation_list()
     {
         // $donations = Donation::where('user_id','=',Auth::user()->id)->get();
-        $donations = Donation::where('user_id','=',50)
+        $donations = Donation::where('user_id','=',Auth::user()->id)
                             ->orderBy('id','DESC')
                             ->get();
 
@@ -119,9 +120,9 @@ class DonationController extends Controller
         $donation_image  = DonationImage::find($id);
 
 
-        if (File::exists(public_path().'/public/donation-image/'.$donation_image->photo)) //delete previous image from storage
+        if (File::exists(public_path().'/public/images/donation/'.$donation_image->photo)) //delete previous image from storage
         {  
-            File::delete(public_path().'/public/donation-image/'.$donation_image->photo);
+            File::delete(public_path().'/public/images/donation/'.$donation_image->photo);
         }
         
         $donation_image->delete();
@@ -153,7 +154,7 @@ class DonationController extends Controller
                 $img   = Str::random(10). '.' .$image->getClientOriginalExtension();
     
                 //Move the Product Image into the required folder
-                $location = public_path('public/donation-image/'.$img);
+                $location = public_path('public/images/donation/'.$img);
                 Image::make($image)->resize(300,300)->save($location);
 
     
@@ -190,9 +191,9 @@ class DonationController extends Controller
         {
             $donation_image = DonationImage::find($imageId->id);
 
-            if (File::exists(public_path().'/public/donation-image/'.$donation_image->photo)) //delete previous image from storage
+            if (File::exists(public_path().'/public/images/donation/'.$donation_image->photo)) //delete previous image from storage
             {  
-                File::delete(public_path().'/public/donation-image/'.$donation_image->photo);
+                File::delete(public_path().'/public/images/donation/'.$donation_image->photo);
             }
 
             $donation_image->delete(); 
