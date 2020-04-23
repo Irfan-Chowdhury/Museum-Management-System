@@ -76,7 +76,12 @@
                             <td style="text-align:center">{{$key+1}}</td>
                             <td>{{$item->item_name}}</td>
                             <td>{{Str::limit($item->description,50,' ...')}}</td>
-                            <td style="text-align:center">@if ($item->status=='request') Sent @endif</td>
+                            <td style="text-align:center"> 
+                                @if ($item->status=='pending') Pending 
+                                @elseif($item->status=='reject') Sorry
+                                @elseif($item->status=='accept') Accepted
+                                @endif
+                            </td>
                             <td style="text-align:center">
                                 <a title="Edit" target="_blank" href="{{route('donation-edit',$item->id)}}" class="btn btn-warning">Edit</a>
                             </td>

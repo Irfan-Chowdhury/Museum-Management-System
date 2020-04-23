@@ -111,6 +111,11 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/visit-entry-list','VisitEntryController@visit_entry_list')->name('visit-entry-list');
     Route::get('/visit-entry-delete/{id}','VisitEntryController@visit_entry_delete')->name('visit-entry-delete');
 
+    //Donation
+    Route::get('/all-donation','DonationController@all_donation')->name('all-donation');
+    Route::get('/donation-reject/{id}','DonationController@donation_reject')->name('donation-reject');
+    Route::get('/donation-accept/{id}','DonationController@donation_accept')->name('donation-accept');
+
 });
 
 //Manage = List

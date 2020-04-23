@@ -18,7 +18,7 @@ class CreateDonationsTable extends Migration
             $table->unsignedBigInteger('user_id'); //User
             $table->string('item_name');
             $table->longText('description');
-            $table->string('status')->default('request');
+            $table->string('status')->default('pending');
             // $table->string('photo');
             $table->timestamps();
         });
