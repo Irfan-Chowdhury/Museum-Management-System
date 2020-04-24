@@ -115,7 +115,12 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/all-donation','DonationController@all_donation')->name('all-donation');
     Route::get('/donation-reject/{id}','DonationController@donation_reject')->name('donation-reject');
     Route::get('/donation-accept/{id}','DonationController@donation_accept')->name('donation-accept');
-
+    
+    //Message
+    Route::get('/user-messages','MessageController@user_messages')->name('user-messages');
+    Route::get('/visitor-messages','MessageController@visitor_messages')->name('visitor-messages');
+    Route::get('/message-read/{id}','MessageController@message_read')->name('message-read');
+    Route::get('/message-delete/{id}','MessageController@message_delete')->name('message-delete');
 });
 
 //Manage = List

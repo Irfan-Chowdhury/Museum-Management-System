@@ -27,7 +27,7 @@
     <div class="container">
     
     <!-- Session Message Check --> 
-    @if (session()->has('success'))    
+    @if (session()->has('success_msg'))    
       <div  style="margin-bottom:50px; margin-left:30%"> 
           <h6><strong style="color:green">{{ session('message') }}</strong></h6>
       </div>

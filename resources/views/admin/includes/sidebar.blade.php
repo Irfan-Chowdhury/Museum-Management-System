@@ -269,6 +269,32 @@
             </ul>
           </li>
 
+          <!-- Inbox -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              {{-- <i class="nav-icon fas fa-inbox"></i> --}}
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                Inbox
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('user-messages')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Users Message</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('visitor-messages')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Visitors Message</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
 
         </ul>
       </nav>

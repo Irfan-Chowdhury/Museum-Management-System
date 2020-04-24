@@ -101,8 +101,6 @@ class VisitorController extends Controller
         if (Auth::check()==TRUE) 
         {
             $validator= Validator::make($request->all(),[
-                // 'name'      => 'required|string',
-                // 'email'     => 'required|string|email',
                 'subject'   => 'required|string',
                 'message'   => 'required|string',
             ]);
@@ -143,7 +141,7 @@ class VisitorController extends Controller
             $message->save();    
         }
         
-        session()->flash('success','');
+        session()->flash('success_msg','');
         session()->flash('message','Your message has been sent. Thank you!');
         
         return redirect()->back();
