@@ -25,7 +25,7 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('admin.home');
 
 Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     
@@ -121,6 +121,18 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/visitor-messages','MessageController@visitor_messages')->name('visitor-messages');
     Route::get('/message-read/{id}','MessageController@message_read')->name('message-read');
     Route::get('/message-delete/{id}','MessageController@message_delete')->name('message-delete');
+
+    //Report
+    Route::group(['prefix' => 'report'], function () {
+        //View visit entry between dates 
+        Route::get('/visit-entry-between-dates','ReportController@visitEntryBetweenDates')->name('visit-entry-between-dates');
+        Route::get('/visit-entry-between-dates-show','ReportController@visitEntryBetweenDatesShow')->name('visit-entry-between-dates-show');
+        Route::get('/downloadPDF-visit-entry','ReportController@downloadPDFVisitEntry')->name('downloadPDF-visit-entry');
+        //View invoice between dates 
+        Route::get('/invoice-between-dates','ReportController@invoiceBetweenDates')->name('invoice-between-dates');
+        Route::get('/invoice-between-dates-show','ReportController@invoiceBetweenDatesShow')->name('invoice-between-dates-show');
+        Route::get('/downloadPDF-invoice-between-dates','ReportController@downloadPDFInvoiceBetweenDates')->name('downloadPDF-invoice-between-dates');
+    });
 });
 
 //Manage = List
