@@ -25,10 +25,13 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('admin.home');
+//Route::get('admin/home', 'HomeController@index')->name('admin.home');
 
 Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
-    
+
+    // -- Home --
+    Route::get('/home', 'HomeController@index')->name('admin.home');
+
     // -- Admin --
     Route::get('/admin-create', 'AdminController@admin_create')->name('admin-create');
     Route::post('/admin-save', 'AdminController@admin_save')->name('admin-save');
