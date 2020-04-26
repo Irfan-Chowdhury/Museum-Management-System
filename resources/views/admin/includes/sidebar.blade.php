@@ -298,7 +298,6 @@
           <!-- Report -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              {{-- <i class="nav-icon fas fa-inbox"></i> --}}
               <i class="nav-icon fas fa-file-pdf"></i>
               <p>
                 Report
@@ -316,6 +315,25 @@
                 <a href="{{route('invoice-between-dates')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Invoice</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Chart -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-chart-bar"></i>
+              <p>
+                Chart
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('chart-visit-entry')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Chart of Visit Entry</p>
                 </a>
               </li>
             </ul>

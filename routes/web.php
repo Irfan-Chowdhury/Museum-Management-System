@@ -136,6 +136,10 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
         Route::get('/invoice-between-dates-show','ReportController@invoiceBetweenDatesShow')->name('invoice-between-dates-show');
         Route::get('/downloadPDF-invoice-between-dates','ReportController@downloadPDFInvoiceBetweenDates')->name('downloadPDF-invoice-between-dates');
     });
+
+    //Chart
+    Route::get('/chart-visit-entry','ChartController@chartVisitEntry')->name('chart-visit-entry');
+
 });
 
 //Manage = List
