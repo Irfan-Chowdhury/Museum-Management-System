@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Visitor;
 use Auth;
+use App\Imports\ExcelImport;
+use App\Exports\ExcelExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class VisitorController extends Controller
 {
@@ -112,6 +116,21 @@ class VisitorController extends Controller
         session()->flash('message','Visitor Deleted Successfully.');
         
         return redirect()->back();
+    }
+
+    
+    
+    // ===================== Excel File ==========================
+    public function visitor_excel_import()
+    {
+        Excel::import(new ExcelImport, request()->file('file'));
+
+        return back();
+    }
+
+    public function visitor_excel_export()
+    {
+        return Excel::download(new ExcelExport, 'visitor.xlsx');
     }
 
     

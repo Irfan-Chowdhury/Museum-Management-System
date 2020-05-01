@@ -10,9 +10,25 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header d-flex">
-                  <h2 class="text-secondary">Visitor List</h2>
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2 class="text-secondary">Visitor List</h2> 
+                        </div>
+                        <div class="col-md-5"></div>
+                        <div class="col-md-3">
+                            <form action="{{ route('visitor-excel-import') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="file" accept=".xlsx"><br>
+                                <button class="btn btn-success">Import Data</button>
+                                <a class="btn btn-primary" href="{{ route('visitor-excel-export') }}">Export Data</a>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+                
+
+                
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">

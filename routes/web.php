@@ -107,7 +107,11 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
     Route::get('/visitor-list','VisitorController@visitor_list')->name('visitor-list');
     Route::post('/visitor-update/{id}','VisitorController@visitor_update')->name('visitor-update');
     Route::get('/visitor-delete/{id}','VisitorController@visitor_delete')->name('visitor-delete');
+    // -- Excel --
+    Route::post('/visitor-excel-import', 'VisitorController@visitor_excel_import')->name('visitor-excel-import');
+    Route::get('/visitor-excel-export', 'VisitorController@visitor_excel_export')->name('visitor-excel-export');
     
+
     // -- Visit Entry --
     Route::get('/visit-entry-create','VisitEntryController@visitor_entry_create')->name('visit-entry-create');
     Route::post('/visit-entry-save','VisitEntryController@visit_entry_save')->name('visit-entry-save');
