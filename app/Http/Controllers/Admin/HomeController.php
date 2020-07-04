@@ -9,9 +9,23 @@ use App\Models\User;
 use App\Models\Visitor;
 use App\Models\Donation;
 use App\Models\Message;
+use Auth;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('is_admin');
+
+        // if(Auth::user()->role == 'admin'){
+        //     return $next($request);
+        // }
+        // else {
+        //     return redirect('/login')->send();
+        // }
+    }
+
     public function index()
     {
         $items            = Item::all();

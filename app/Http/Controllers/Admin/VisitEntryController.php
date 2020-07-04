@@ -9,6 +9,7 @@ use App\Models\VisitEntry;
 use App\Models\Visitor;
 use App\Models\User;
 use Auth;
+use DB;
 
 class VisitEntryController extends Controller
 {
@@ -119,6 +120,12 @@ class VisitEntryController extends Controller
 
         $visit_entries = VisitEntry::with('visitor','user')->orderBy('id','DESC')->get();
        
+        // $visit_entries = DB::table('visit_entries')
+        //                 ->join('visitors','visitors.id','=','visit_entries.visitor_id')
+        //                 ->join('users','users.id','=','visit_entries.user_id')
+        //                 ->select('visitors.*','users.*','visit_entries.*')
+        //                 ->get();
+
         // return $visit_entries;
 
        return view('admin.pages.visit_entry.visit-entry-list',compact('visit_entries'));

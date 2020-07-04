@@ -35,6 +35,7 @@
           </li>
 
           <!--Admin-->
+          @if(Auth::user()->role == "super-admin")
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-secret"></i>
@@ -58,6 +59,7 @@
               </li>
             </ul>
           </li>
+          @endif
           
           <!--Notice-->
           <li class="nav-item has-treeview">

@@ -33,14 +33,15 @@ class ReportController extends Controller
 
 
         $from = date($request->from_date);
-        $to   = date($request->to_date);
+        $to   = date($request->to_date); 
 
         // $data = VisitEntry::where('created_at','>=', $from)
         //                 ->where('created_at','<=', $to)
         //                 ->get();
 
         $visit_entries = VisitEntry::with('visitor','user')
-                                    ->whereBetween('created_at', [$from, $to])
+                                    // ->whereBetween('created_at', [$from, $to])
+                                    ->whereBetween('created_at', [$from." 00:00:00", $to." 23:59:59"])
                                     ->get();
 
 
@@ -65,7 +66,7 @@ class ReportController extends Controller
 
 
         $visit_entries = VisitEntry::with('visitor','user')
-                        ->whereBetween('created_at', [$from, $to])
+                        ->whereBetween('created_at', [$from." 00:00:00", $to." 23:59:59"])
                         ->get();
 
 
@@ -99,11 +100,11 @@ class ReportController extends Controller
         $to   = date($request->to_date);
 
 
-        $visit_entries = VisitEntry::whereBetween('created_at', [$from, $to])
+        $visit_entries = VisitEntry::whereBetween('created_at', [$from." 00:00:00", $to." 23:59:59"])
                                     ->get();
 
         $total_ticket  = DB::table('visit_entries')
-                        ->whereBetween('created_at', [$from, $to])
+                        ->whereBetween('created_at', [$from." 00:00:00", $to." 23:59:59"])
                         ->get()
                         ->sum("quantity");
         
@@ -116,11 +117,11 @@ class ReportController extends Controller
         $from = date($request->from_date);
         $to   = date($request->to_date);
 
-        $visit_entries = VisitEntry::whereBetween('created_at', [$from, $to])
+        $visit_entries = VisitEntry::whereBetween('created_at', [$from." 00:00:00", $to." 23:59:59"])
                                     ->get();
 
         $total_ticket  = DB::table('visit_entries')
-                        ->whereBetween('created_at', [$from, $to])
+                        ->whereBetween('created_at', [$from." 00:00:00", $to." 23:59:59"])
                         ->get()
                         ->sum("quantity");
 

@@ -30,7 +30,7 @@
                             <tr class="text-center table-primary">
                                 <th>SL</th>
                                 <th>Category Name</th>
-                                <th>Store of Direction</th>
+                                <th>Store Room (Direction)</th>
                                 <th>Total Items</th>
                                 <th>Action</th>
                             </tr>

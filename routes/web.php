@@ -27,7 +27,7 @@ Auth::routes();
 
 //Route::get('admin/home', 'HomeController@index')->name('admin.home');
 
-Route::group(['prefix' => 'admin','namespace'=>'Admin'], function () {
+Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>'is_admin'], function () {
 
     // -- Home --
     Route::get('/home', 'HomeController@index')->name('admin.home');
@@ -163,7 +163,7 @@ Route::group(['namespace'=>'Front'], function () {
 
 
     //Others
-    Route::group(['prefix' => 'others'], function () {
+    Route::group(['prefix' => 'others','middleware'=>'is_user'], function () {
         Route::get('/notice','VisitorController@notice')->name('notice');
         Route::get('/notice/{id}','VisitorController@notice_read')->name('notice.read');
         Route::get('/rule','VisitorController@rule')->name('rule');
@@ -172,7 +172,7 @@ Route::group(['namespace'=>'Front'], function () {
     });
     
     //Donation
-    Route::group(['prefix' => 'donation'], function () {
+    Route::group(['prefix' => 'donation','middleware'=>'is_user'], function () {
         Route::get('/donation-create','DonationController@donation_create')->name('donation-create');
         Route::post('/donation-save','DonationController@donation_save')->name('donation-save');
         Route::get('/donation-list','DonationController@donation_list')->name('donation-list');
@@ -190,10 +190,10 @@ Route::group(['namespace'=>'Front'], function () {
         Route::post('/user-registration','UserController@userRegistration')->name('user-registration');
         Route::post('/user-login','UserController@userLogin')->name('user-login');
         Route::get('/user-logout','UserController@userLogout')->name('user-logout');
-        Route::get('/user-profile','UserController@userProfile')->name('user-profile');
-        Route::get('/user-profile-edit','UserController@userProfileEdit')->name('user-profile-edit');
+        Route::get('/user-profile','UserController@userProfile')->name('user-profile')->middleware('is_user');
+        Route::get('/user-profile-edit','UserController@userProfileEdit')->name('user-profile-edit')->middleware('is_user');
         Route::post('/user-profile-update','UserController@userProfileUpdate')->name('user-profile-update');
-        Route::get('/user-password-change','UserController@userPasswordChange')->name('user-password-change');
+        Route::get('/user-password-change','UserController@userPasswordChange')->name('user-password-change')->middleware('is_user');
         Route::post('/password-change-update','UserController@passwordChangeUpdate')->name('password-change-update');
     });
 });

@@ -11,6 +11,8 @@ class ChartController extends Controller
 {
     public function chartVisitEntry()
     {
+        $Year = date('Y');
+
         $data = [];
 
         for ($i=1; $i <=12 ; $i++) //Update Later For Year Select
@@ -24,7 +26,7 @@ class ChartController extends Controller
         
         //return $data;
 
-        return view('admin.pages.chart.chart-visit-entry',compact('data'));
+        return view('admin.pages.chart.chart-visit-entry',compact('data','Year'));
     }
 }
 

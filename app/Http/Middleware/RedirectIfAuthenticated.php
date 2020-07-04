@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 class RedirectIfAuthenticated
 {
     /**
+     * If an Admin already have LoggedIn, he can not access login page.  
+     * 
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -19,7 +21,8 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+            // return redirect(RouteServiceProvider::HOME);
+            return redirect()->back();
         }
 
         return $next($request);

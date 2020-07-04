@@ -1,3 +1,8 @@
+    @php
+
+     $museum = DB::table('museums')->first();   
+    
+    @endphp
     <!-- toggle top area -->
     <div class="hidden-top">
         <div class="hidden-top-inner container">
@@ -6,9 +11,9 @@
               <ul>
                 <li><strong>We are available for any custom works</strong></li>
                 {{-- @foreach ($museum as $item) --}}
-                  <li>Main office: Springville center X264, Park Ave S.01</li>
+                  <li>Main office: {{$museum->address}}</li>
                   {{-- <li>{{$item->address}}</li> --}}
-                  <li>Call us <i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891</li>
+                  <li>Call us <i class="icon-phone"></i> (+88) {{$museum->phone}} </li>
                 {{-- @endforeach --}}
               </ul>
             </div>

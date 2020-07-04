@@ -38,13 +38,13 @@
                                 @foreach ($user_messages as $key => $item)
                                     @if ($item->status=='unread')
                                         <tr style="background:#343A40">
-                                            <td class="text-center"><a href="{{route('message-delete',$item->id)}}" onclick="return confirm('Are You Sure to delete ?')" class="fa fa-trash-alt" title="Delete"></a></td>
+                                            <td class="text-center"><a href="{{route('message-delete',$item->id)}}" onclick="return confirm('Are You Sure to delete ?')" class="fa fa-trash-alt text-danger" title="Delete"></a></td>
                                             <td><a class="text-light" href="{{route('message-read',$item->id)}}"> <strong> ({{$item->user->user_id_no}}) - {{$item->user->name}}</strong></a></td>
                                             <td><a class="text-light" href="{{route('message-read',$item->id)}}"> <strong> {{$item->subject}}</strong> - <span style="color:#B4B3B2"> {{Str::limit($item->message,40,' ...')}}</span></a></td> 
                                         </tr>
                                     @else 
                                         <tr style="background:#403D3A">
-                                            <td class="text-center"><a href="{{route('message-delete',$item->id)}}" onclick="return confirm('Are You Sure to delete ?')" class="fa fa-trash-alt" title="Delete"></a></td>
+                                            <td class="text-center"><a href="{{route('message-delete',$item->id)}}" onclick="return confirm('Are You Sure to delete ?')" class="fa fa-trash-alt text-danger" title="Delete"></a></td>
                                             <td><a class="text-light" href="{{route('message-read',$item->id)}}"> <span style="color:#B4B3B2"> ({{$item->user->user_id_no}}) - {{$item->user->name}} </span></a></td>
                                             <td><a class="text-light" href="{{route('message-read',$item->id)}}"> <span style="color:#B4B3B2" >{{$item->subject}}</span> - <span style="color:#B4B3B2" > {{Str::limit($item->message,40,' ...')}}</span></a></td> 
                                         </tr>

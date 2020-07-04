@@ -20,7 +20,7 @@
             </div>
   
             <div class="form-group">
-              <label>Store of Direction</label>
+              <label>Store Room (Direction)</label>
               <input type="text" name="store_direction" class="form-control  @error('store_direction') is-invalid @enderror" value="{{$category->store_direction}}">
               @error('store_direction')
                   <div class="text-danger">{{ $message }}</div>

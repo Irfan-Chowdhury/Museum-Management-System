@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                  <h2 class="text-secondary">Chart of Visiting in Museum</h2>
+                  <h2 class="text-secondary">Chart of Visit in Museum (Year- {{$Year}})</h2>
                 </div>
 
                 <div class="card-body">
@@ -34,22 +34,22 @@
     function drawStuff() {
       var data = new google.visualization.arrayToDataTable([
         ['Move', 'Percentage'],
-        ["January", {{count($data[1])}}],
-        ["February", {{count($data[2])}}],
-        ["March", {{count($data[3])}}],
-        ["April", {{count($data[4])}}],
+        ["January", {{count($data[1])}}], //In January 5 people visit 
+        ["February", {{count($data[2])}}], //In February 5 people visit
+        ["March", {{count($data[3])}}],  //In March 4 people visit
+        ["April", {{count($data[4])}}], //In April 9 people visit
         ['May', 23], //Update Later From Here to $data[12]
-        ['June', 42],
-        ['July', 14],
-        ['August', 43],
-        ['Septembar', 6],
-        ['Octobar', 30],
-        ['Novembar', 20],
-        ['Decembar', 6],
+        ['June', 32],
+        ['July', 54],
+        ['August', 45],
+        ['Septembar', 20],
+        ['Octobar', 34],
+        ['Novembar', 50],
+        ['December', 25],
       ]);
 
       var options = {
-        width: 800,
+        width: 900,
         legend: { position: 'none' },
         chart: {
           title: 'Bar Chart',
