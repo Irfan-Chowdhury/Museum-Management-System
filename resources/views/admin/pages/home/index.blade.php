@@ -48,6 +48,7 @@
       <section class="col-lg-7 connectedSortable">
           <div class="row">
 
+            @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin")
             <div class="col-lg-4 col-6">
               <!-- small box -->
               <div class="small-box bg-info">
@@ -58,10 +59,12 @@
                 <div class="icon">
                   <i class="fas fa-store"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
               </div>
             </div>
+            @endif
 
+            @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin")
             <div class="col-lg-4 col-6">
               <div class="small-box bg-warning">
                 <div class="inner">
@@ -72,23 +75,32 @@
                   <i class="ion ion-person-add"></i>
                   {{-- <i class="fas fa-file-pdf"></i> --}}
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
               </div>
             </div>
+            @endif
 
-            <div class="col-lg-4 col-6">
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3>{{count($visitors)}}</h3>
-                  <p>Total Registered Visitors</p>
-                </div>
-                <div class="icon">
-                  <i class="fas fa-users"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+            
+              <div  @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin")
+                      class="col-lg-4 col-6">
+                    @else
+                      <div class="col-lg-12 col-6">
+                    @endif 
+                        <div class="small-box bg-danger">
+                          <div class="inner">
+                            <h3>{{count($visitors)}}</h3>
+                            <p>Total Registered Visitors</p>
+                          </div>
+                          <div class="icon">
+                            <i class="fas fa-users"></i>
+                          </div>
+                          {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
+                        </div>
               </div>
-            </div>
+            
 
+            @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin")
             <div class="col-lg-4 col-6">
               <div class="small-box bg-success">
                 <div class="inner">
@@ -98,10 +110,12 @@
                 <div class="icon">
                   <i class="fas fa-hand-holding-usd"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
               </div>
             </div>
+            @endif
 
+            @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin")
             <div class="col-lg-4 col-6">
               <div class="small-box bg-secondary">
                 <div class="inner">
@@ -111,10 +125,12 @@
                 <div class="icon">
                   <i class="far fa-envelope"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
               </div>
             </div>
+            @endif
             
+            @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin")
             <div class="col-lg-4 col-6">
               <div class="small-box bg-primary">
                 <div class="inner">
@@ -124,9 +140,10 @@
                 <div class="icon">
                   <i class="far fa-envelope"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
               </div>
             </div>
+            @endif
 
           </div>
           <!-- /.row -->

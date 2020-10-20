@@ -36,7 +36,7 @@
         <div class="row">
         <div class="span8">
             <div class="inner-heading">
-            <h2><strong>Your Total Donation</strong></h2>
+            <h2><strong>Your Donation History</strong></h2>
             </div>
         </div>
         <div class="span4">

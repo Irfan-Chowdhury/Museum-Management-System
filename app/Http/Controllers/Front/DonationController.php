@@ -24,7 +24,7 @@ class DonationController extends Controller
         //--------------------------- validation -----------------------------
         $validator= Validator::make($request->all(),[
             'item_name'      => 'required|string|min:3|max:50',
-            'description'    => 'required',
+            'description'    => 'required|max:1500',
             'donation_image' => 'required|max:1024',
         ]);
 
@@ -93,7 +93,7 @@ class DonationController extends Controller
     {
         $validator= Validator::make($request->all(),[
             'item_name'      => 'required|string|min:3|max:50',
-            'description'    => 'required',
+            'description'    => 'required|max:1500',
         ]);
 
         if($validator->fails())

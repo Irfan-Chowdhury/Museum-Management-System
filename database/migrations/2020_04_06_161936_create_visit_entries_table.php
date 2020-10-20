@@ -19,6 +19,7 @@ class CreateVisitEntriesTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->integer('quantity');
             $table->integer('total_taka');
+            $table->string('entry_operator');
             $table->timestamps();
         });
     }

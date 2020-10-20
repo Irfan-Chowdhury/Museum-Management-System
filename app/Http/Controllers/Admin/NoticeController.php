@@ -22,7 +22,7 @@ class NoticeController extends Controller
         //--------------------------- validation -----------------------------
         $validator= Validator::make($request->all(),[
             'title'       => 'required|unique:notices|max:100',
-            'description' => 'required',
+            'description' => 'required|max:1500',
             'photo'       => 'image|max:1024',
         ]);
 
@@ -32,7 +32,6 @@ class NoticeController extends Controller
         }
 
         $notice              = new Notice();
-        $notice->user_id     = Auth::user()->id;
         $notice->title       = $request->title;
         $notice->description = $request->description;
 
@@ -80,7 +79,7 @@ class NoticeController extends Controller
         //--------------------------- validation -----------------------------
         $validator= Validator::make($request->all(),[
             'title'       => 'required|max:100',
-            'description' => 'required',
+            'description' => 'required|max:1500',
             'photo'       => 'image|max:1024',
         ]);
 
@@ -90,7 +89,6 @@ class NoticeController extends Controller
         }
 
         $notice              = Notice::find($id);
-        $notice->user_id     = Auth::user()->id;
         $notice->title       = $request->title;
         $notice->description = $request->description;
         // $notice->status      = $request->status;

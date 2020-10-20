@@ -54,7 +54,7 @@
                                     
                                     
                                     <div class="form-group">
-                                        <label for="">Description</label>
+                                        <label for="">Description</label> <span>[max 1500 character]</span>
                                         <textarea name="description" class="textarea @error('description') is-invalid @enderror">{{$notice->description}}</textarea>
                                         @error('description')
                                             <div class="text-danger">{{ $message }}</div>

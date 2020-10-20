@@ -31,7 +31,6 @@ class ScheduleController extends Controller
         }
 
         $schedule                = new Schedule();
-        $schedule->user_id       = Auth::user()->id;
         $schedule->day           = $request->day; 
         $schedule->starting_time = $request->starting_time; 
         $schedule->ending_time   = $request->ending_time; 

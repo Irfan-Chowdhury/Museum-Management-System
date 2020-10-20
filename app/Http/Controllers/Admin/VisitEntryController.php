@@ -44,7 +44,7 @@ class VisitEntryController extends Controller
                 $validator= Validator::make($request->all(),[
                     'visitor_name'      => 'min:3|string|max:40',
                     'visitor_email'     => 'email|unique:visitors',
-                    'visitor_phone'     => 'min:11|max:11|unique:visitors',
+                    'visitor_phone'     => 'min:10|max:10|unique:visitors',
                 ]);
 
                 if($validator->fails())
@@ -52,7 +52,6 @@ class VisitEntryController extends Controller
                     return redirect()->back()->withErrors($validator)->withInput();
                 }
            
-                $visitor->user_id = Auth::user()->id;
                 $visitor->visitor_name    = $request->visitor_name;
                 $visitor->visitor_email   = $request->visitor_email;
                 $visitor->visitor_phone   = $request->visitor_phone;
@@ -105,6 +104,7 @@ class VisitEntryController extends Controller
             return redirect()->back();
         }
 
+        $visit_entry->entry_operator = Auth::user()->name;  //update-2
         $visit_entry->quantity   = $request->quantity;
         $visit_entry->total_taka = $request->quantity * 10; // Per Head - 10 Tk
         $visit_entry->save();

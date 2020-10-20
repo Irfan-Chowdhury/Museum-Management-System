@@ -55,7 +55,7 @@
                                   </tr>
                                   <tr>
                                     <th>Total Sell :</th>
-                                    <td>{{$total_ticket*10}} (BDT)</td>
+                                    <td>{{$total_ticket*10}}.00 (BDT)</td>
                                   </tr>
                                 </table>
                               </div>

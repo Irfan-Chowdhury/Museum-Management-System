@@ -35,7 +35,6 @@ class VisitorController extends Controller
         }
 
         $visitor                  = new Visitor();
-        $visitor->user_id         = Auth::user()->id;
         $visitor->visitor_name    = $request->visitor_name;
         $visitor->visitor_email   = $request->visitor_email;
         $visitor->visitor_phone   = $request->visitor_phone;
@@ -94,7 +93,6 @@ class VisitorController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $visitor->user_id = Auth::user()->id;
         $visitor->visitor_name    = $request->visitor_name;
         $visitor->visitor_email   = $request->visitor_email;
         $visitor->visitor_phone   = $request->visitor_phone;

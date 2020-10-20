@@ -64,6 +64,7 @@
                                     <th>Address</th>
                                     <th>Quantity</th>
                                     <th>Total Tk</th>
+                                    <th>Entry Operator</th>
                                     <th>Entry Date</th>
                                     <th>Time</th>
                                 </tr>
@@ -99,7 +100,7 @@
                                                     @if($item->visitor->email)
                                                         {{$item->visitor->email}} <!-- Visitor Email  -->
                                                     @else 
-                                                        <span class="font-italic">NULL</span>
+                                                        <span class="font-italic">N / A</span>
                                                     @endif
 
                                                 @elseif($item->user_id!=NULL)    
@@ -129,6 +130,7 @@
                                 
                                             <td>{{$item->quantity}}</td> 
                                             <td>{{$item->total_taka}}</td> 
+                                            <td>{{$item->entry_operator}}</td> <!--update-2-->
                                             <td>{{date('d-m-Y', strtotime($item->created_at))}}</td> <!-- 07-04-2020 -->                                        
                                             <td class="text-center">{{date('h:i A',strtotime($item->created_at))}}</td>
                                         </tr>

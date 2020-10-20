@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Item</h1>
+            <h1 class="m-0 text-dark">New Item Create</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -66,7 +66,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="">About The Items</label>
+                                        <label for="">Description</label> <span>[max 1500 character]</span>
                                         <textarea name="description" class="textarea @error('description') is-invalid @enderror">{{old('description')}}</textarea>
                                         @error('description')
                                             <div class="text-danger">{{ $message }}</div>

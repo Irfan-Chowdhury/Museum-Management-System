@@ -73,11 +73,11 @@
                                   </tr>
                                   <tr>
                                     <th>Per Ticket Price :</th>
-                                    <td>৳ 10.00</td>
+                                    <td>10.00 (BDT)</td>
                                   </tr>
                                   <tr>
                                     <th>Total Sell :</th>
-                                    <td>৳ {{$total_ticket*10}}</td>
+                                    <td>{{$total_ticket*10}}.00 (BDT)</td>
                                   </tr>
                                 </table>
                               </div>

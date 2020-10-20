@@ -1,6 +1,6 @@
     @php
 
-     $museum = DB::table('museums')->first();   
+    $museum = DB::table('museums')->orderBy('id', 'desc')->first(); //update
     
     @endphp
     <!-- toggle top area -->
@@ -79,7 +79,7 @@
                       </div>
 
                       <div class="control-group">
-                        <label class="control-label" for="inputEmail">Phone</label>
+                        <label class="control-label" for="inputEmail">Phone (+880)</label>
                         <div class="controls">
                           <input type="number" name="phone" id="inputEmail" placeholder="Phone"> <br>
                           @error('phone')
@@ -273,11 +273,14 @@
 
                       <!-- Loggin Check Start  -->
                       @if (Auth::check())
+                          <li class="{{ Route::currentRouteNamed('item*') ? 'active' : ''}}">
+                            <a href="{{route('item-info')}}">Item Info</a>
+                          </li>
                           <li class="dropdown {{ Request::is('donation*') ? 'active' : '' }}"> <!--By Url-->
                             <a href="#">Donation <i class="icon-angle-down"></i></a>
                             <ul class="dropdown-menu">
                               <li><a href="{{route('donation-create')}}">Add New Donation</a></li>
-                              <li><a href="{{route('donation-list')}}">Donation Info List</a></li>
+                              <li><a href="{{route('donation-list')}}">Your Donation History</a></li>
                             </ul>
                           </li>
                           <li class="dropdown {{ Request::is('others*') ? 'active' : '' }}">
@@ -286,7 +289,7 @@
                               <li><a href="{{route('notice')}}">Notice</a></li>
                               <li><a href="{{route('rule')}}">Rules</a></li>
                               <li><a href="{{route('schedule')}}">Visiting Time</a></li>
-                              <li><a href="{{route('item-info')}}">Item Info</a></li>
+                              {{-- <li><a href="{{route('item-info')}}">Item Info</a></li> --}}
                             </ul>
                           </li>
                           <li class="dropdown {{ Request::is('user*') ? 'active' : '' }}">

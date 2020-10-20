@@ -16,8 +16,7 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-
-        if (Auth::check() && Auth::user()->role == 'super-admin' || Auth::user()->role == 'admin') {
+        if (Auth::check() && Auth::user()->role == 'super-admin' || Auth::user()->role == 'sub-admin'|| Auth::user()->role == 'entry-operator') {
             return $next($request);
         }
         elseif (Auth::user()->role == 'user') {

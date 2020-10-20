@@ -38,7 +38,7 @@ class VisitorController extends Controller
                                 ->where('status','=','published')
                                 ->get();
 
-        $museum  = Museum::get()->first();
+        $museum  = Museum::get()->last();
         // return $museum;
         return view('public.pages.visitor.about',compact('museum','photos'));
     }
@@ -91,7 +91,7 @@ class VisitorController extends Controller
 
     public function contact()
     {
-        $museum = Museum::get()->first();
+        $museum = Museum::orderBy('id','DESC')->first();
 
         return view('public.pages.visitor.contact',compact('museum'));
     }
@@ -150,7 +150,7 @@ class VisitorController extends Controller
     public function item_info(Request $request)
     {
         $items = DB::table('items')
-                ->select('category_name','store_direction','items.item_name')
+                ->select('category_name','store_direction','items.*')
                 ->join('categories','categories.id','=','items.category_id')
                 ->orderBy('categories.store_direction','ASC')
                 ->paginate(10);
@@ -159,5 +159,23 @@ class VisitorController extends Controller
         // $items = Item::with('category')->orderBy('store_direction','ASC')->get();
 
         return view('public.pages.visitor.item-info',compact('items'));
+    }
+
+    public function item_info_details($id)
+    {
+        $donation_accept = DB::table('donations') //update-2
+                    ->where('status','=','accept')
+                    ->where('user_id','=',Auth::user()->id)
+                    ->get();
+
+        // return count($donation_accept);
+
+        $item = DB::table('items')
+                ->join('categories','categories.id','=','items.category_id')
+                ->select('category_name','store_direction','items.*')
+                ->where('items.id',$id)
+                ->get();
+        
+        return view('public.pages.visitor.item-info-details',compact('item','donation_accept'));
     }
 }

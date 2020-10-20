@@ -115,7 +115,11 @@
                                     </tr>
                                     <tr>
                                         <td><h6><strong>Identity No</strong></h6></td>
-                                        <td><h6>{{$user->user_id_no}}</h6></td>
+                                        @if ($user->role=='super-admin' || $user->role=='admin')
+                                            <td><h6>Admin</h6></td>
+                                        @else
+                                            <td><h6>{{$user->user_id_no}}</h6></td>
+                                        @endif
                                     </tr>
                                 </tbody>
                             </table>   

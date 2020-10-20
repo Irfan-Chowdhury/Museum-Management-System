@@ -24,7 +24,7 @@ class MuseumController extends Controller
         //--------------------------- validation -----------------------------
         $validator= Validator::make($request->all(),[
             'museum_name'    => 'required|string|max:50',
-            'description'    => 'required',
+            'description'    => 'required|max:3000',
             'address'        => 'required',
             'phone'          => 'required|max:11|min:11',
             'map'            => 'required',
@@ -36,7 +36,6 @@ class MuseumController extends Controller
         }
 
         $museum                 = new Museum();
-        $museum->user_id        = Auth::user()->id;
         $museum->museum_name    = $request->museum_name;
         $museum->description    = $request->description;
         $museum->address        = $request->address;
@@ -51,10 +50,10 @@ class MuseumController extends Controller
         return redirect()->back();
     }
 
-    public function museum_manage()
+    public function museum_manage() //update
     {
-        $museum = Museum::all()->last();
-        // $museum = Museum::orderBy('id', 'desc')->first();
+        // $museum = Museum::all()->last();
+        $museum = Museum::orderBy('id', 'desc')->first();
 
         return view('admin.pages.museum.museum-manage',compact('museum'));
 
@@ -73,8 +72,16 @@ class MuseumController extends Controller
 
     public function museum_update(Request $request, $id)
     {
+        $validator= Validator::make($request->all(),[
+            'description'    => 'required|max:3000',
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $museum = Museum::find($id);
-        $museum->user_id        = Auth::user()->id;
         $museum->museum_name    = $request->museum_name;
         $museum->description    = $request->description;
         $museum->address        = $request->address;

@@ -32,8 +32,8 @@
                                 <th>SL</th>
                                 <th>Category</th>
                                 <th>Item Name</th>
-                                <th>About the Item</th>
-                                <th>Direction Path</th>
+                                <th>Description</th>
+                                <th>Direction (Room)</th>
                                 <th>Photo</th>
                                 <th>Operator</th>
                                 <th>Action</th>

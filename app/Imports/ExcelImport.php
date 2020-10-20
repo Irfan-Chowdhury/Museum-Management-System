@@ -14,13 +14,21 @@ class ExcelImport implements ToModel
     */
     public function model(array $row)
     {
+        // return new Visitor([
+        //     'user_id'           =>  $row[1], //From xlsx start from B Coloumn that's why column-1
+        //     'visitor_name'      =>  $row[2], 
+        //     'visitor_email'     =>  $row[3],
+        //     'visitor_phone'     =>  $row[4],
+        //     'visitor_address'   =>  $row[5],
+        //     'visitor_id_no'     =>  $row[6],
+        // ]);
         return new Visitor([
-            'user_id'           =>  $row[1], //From xlsx start from B Coloumn that's why column-1
-            'visitor_name'      =>  $row[2],
-            'visitor_email'     =>  $row[3],
-            'visitor_phone'     =>  $row[4],
-            'visitor_address'   =>  $row[5],
-            'visitor_id_no'     =>  $row[6],
+            // 'user_id'           =>  $row[1], 
+            'visitor_name'      =>  $row[0], //From xlsx start from B Coloumn that's why column-1
+            'visitor_email'     =>  $row[1],
+            'visitor_phone'     =>  $row[2],
+            'visitor_address'   =>  $row[3],
+            'visitor_id_no'     =>  $row[4],
         ]);
     }
 }

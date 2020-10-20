@@ -4,7 +4,7 @@
     <a href="index3.html" class="brand-link">
       <img src="{{asset('admin/admin-lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Admin</span>
     </a>
 
     <!-- Sidebar -->
@@ -25,14 +25,16 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
          
+          @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin")
           <li class="nav-item has-treeview menu-open">
-            <a href="{{route('admin.home')}}" class="nav-link active">
+            <a href="{{route('admin.home')}}" class="nav-link {{ Route::currentRouteNamed('admin.home') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Home
               </p>
             </a>
           </li>
+          @endif
 
           <!--Admin-->
           @if(Auth::user()->role == "super-admin")
@@ -40,30 +42,54 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-secret"></i>
               <p>
-                Admins Info
+                Sub-admin
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <li class="nav-item {{ Route::currentRouteNamed('admin*') ? 'active' : ''}}">
                 <a href="{{route('admin-create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add New Admin</p>
+                  <p>Add New Sub-admin</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('admin-list')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Admins List</p>
+                  <p>Sub-admins List</p>
                 </a>
               </li>
             </ul>
           </li>
           @endif
-          
-          <!--Notice-->
+
+
+          <!--User List-->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('user-list') ? 'active' : ''}}">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                Users
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('user-list')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Users List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          {{-- @endif --}}
+
+
+          <!--Notice-->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('notice*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-bullhorn"></i>
               <p>
                 Notice
@@ -85,10 +111,12 @@
               </li>
             </ul>
           </li>
+          {{-- @endif --}}
 
           <!-- Rules -->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('rule*') ? 'active' : ''}}">
               <i class="nav-icon fa fa-gavel"></i>
               <p>
                 Rules
@@ -110,10 +138,12 @@
               </li>
             </ul>
           </li>
-          
+          {{-- @endif --}}
+
           <!-- Museum -->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('museum*') || Route::currentRouteNamed('photo*')  ? 'active' : ''}}">
               <i class="nav-icon fas fa-home"></i>
               {{-- <i class="fas fa-house"></i> --}}
               <p>
@@ -142,10 +172,12 @@
               </li>
             </ul>
           </li>
+          {{-- @endif --}}
 
-          <!-- Scedule -->
+          <!-- Schedule -->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('schedule*') ? 'active' : ''}}">
               <i class="nav-icon fa fa-calendar"></i>
               {{-- <i class="fas fa-house"></i> --}}
               <p>
@@ -168,11 +200,12 @@
               </li>
             </ul>
           </li>
+          {{-- @endif --}}
 
-
-          <!-- Scedule -->
+          <!-- Items of Museum -->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('category*') || Route::currentRouteNamed('item*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-store"></i>
               <p>
                 Items of Museum
@@ -200,11 +233,11 @@
               </li>
             </ul>
           </li>
-
+          {{-- @endif --}}
 
           <!-- Visitor -->
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('visitor-list') ? 'active' : ''}}">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Visitor
@@ -212,12 +245,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{route('visitor-create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add New Visitor</p>
                 </a>
-              </li>
+              </li> --}}
               <li class="nav-item">
                 <a href="{{route('visitor-list')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -228,8 +261,9 @@
           </li>
 
           <!-- Visit Entry -->
+          {{-- @if(Auth::user()->role != "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('visit-entry-create') || Route::currentRouteNamed('visit-entry-list') ? 'active' : ''}}">
               <i class="nav-icon fas fa-ticket-alt"></i>
               <p>
                 Visit Entry
@@ -251,10 +285,12 @@
               </li>
             </ul>
           </li>
+          {{-- @endif --}}
 
           <!-- Donation -->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('all-donation*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-hand-holding-usd"></i>
               <p>
                 Donation
@@ -270,10 +306,12 @@
               </li>
             </ul>
           </li>
+          {{-- @endif --}}
 
           <!-- Inbox -->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('user-messages') || Route::currentRouteNamed('visitor-messages') || Route::currentRouteNamed('messages-read') ? 'active' : ''}}">
               {{-- <i class="nav-icon fas fa-inbox"></i> --}}
               <i class="nav-icon far fa-envelope"></i>
               <p>
@@ -296,10 +334,12 @@
               </li>
             </ul>
           </li>
+          {{-- @endif --}}
 
           <!-- Report -->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('visit-entry-between-dates*') || Route::currentRouteNamed('invoice-between-dates*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-file-pdf"></i>
               <p>
                 Report
@@ -321,10 +361,12 @@
               </li>
             </ul>
           </li>
+          {{-- @endif --}}
 
           <!-- Chart -->
+          {{-- @if(Auth::user()->role == "super-admin" || Auth::user()->role == "sub-admin") --}}
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link {{ Route::currentRouteNamed('chart-visit-entry') ? 'active' : ''}}">
                   <i class="nav-icon fas fa-chart-bar"></i>
               <p>
                 Chart
@@ -340,6 +382,7 @@
               </li>
             </ul>
           </li>
+          {{-- @endif --}}
           
         </ul>
       </nav>

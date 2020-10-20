@@ -100,7 +100,7 @@
                         {{-- @error('description') is-invalid @enderror --}}
 
 
-                        <label for="lname">Item Details</label> <br>
+                        <label for="lname">Item Details</label> <span>[max 1500 character]</span> <br>
                         <textarea name="description" rows="5"></textarea required> <br>
                         @error('description')
                             <span style="color:red">{{ $message }}</span><br>

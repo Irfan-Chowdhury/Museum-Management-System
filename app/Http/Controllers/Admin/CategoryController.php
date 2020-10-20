@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Item;
 
 class CategoryController extends Controller
 {
@@ -77,7 +78,20 @@ class CategoryController extends Controller
 
     public function category_delete($id)
     {
+
         $category = Category::find($id);
+
+        $item = Item::where('category_id',$category->id)->first();
+
+        if ($item) //For Database Relationship Maintain
+        {
+            session()->flash('type','warning');
+            session()->flash('message','Sorry !! there have some items according to this category.');
+
+            return redirect()->back();
+
+        }
+
         $category->delete();
 
         session()->flash('type','success');

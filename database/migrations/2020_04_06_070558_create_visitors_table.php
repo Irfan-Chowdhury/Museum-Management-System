@@ -15,7 +15,6 @@ class CreateVisitorsTable extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id'); //Admin
             $table->string('visitor_name');
             $table->string('visitor_email')->unique()->nullable();
             $table->string('visitor_phone')->unique();

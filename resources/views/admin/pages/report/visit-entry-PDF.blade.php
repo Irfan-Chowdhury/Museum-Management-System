@@ -42,6 +42,7 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Quantity</th>
+                    <th>Operator</th>
                     <th>Date</th>
                     <th>Time</th>
                 </tr>
@@ -92,6 +93,7 @@
                             </td>
                 
                             <td style="text-align:center">{{$item->quantity}}</td> 
+                            <td style="text-align:center">{{$item->entry_operator}}</td> <!--update-2-->
                             <td>{{date('d-m-y', strtotime($item->created_at))}}</td> <!-- 07-04-2020 -->                                        
                             <td>{{date('H:i',strtotime($item->created_at))}}</td>
                         </tr>

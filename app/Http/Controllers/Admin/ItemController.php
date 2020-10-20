@@ -25,7 +25,7 @@ class ItemController extends Controller
         $validator= Validator::make($request->all(),[
             'category_id' => 'required',
             'item_name'   => 'required|string|min:3|max:50',
-            'description' => 'required',
+            'description' => 'required|max:1500',
             'photo'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
 
@@ -49,7 +49,8 @@ class ItemController extends Controller
             $directory      = '/admin/images/items/';
             $imageUrl       = $directory.$imageName;
             $upload_path     = public_path().$imageUrl;
-            Image::make($file)->resize(300,300)->save($upload_path);
+            // Image::make($file)->resize(300,300)->save($upload_path);
+            Image::make($file)->resize(870,350)->save($upload_path);
             
             // --- Image Intervention End ---
 
@@ -85,7 +86,7 @@ class ItemController extends Controller
         $validator= Validator::make($request->all(),[
             // 'category_id' => 'required',
             'item_name'   => 'required|string|min:3|max:50',
-            'description' => 'required',
+            'description' => 'required|max:1500',
             // 'photo'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024', //This Time No Need
         ]);
 
@@ -114,7 +115,8 @@ class ItemController extends Controller
             $directory      = '/admin/images/items/';
             $imageUrl       = $directory.$imageName;
             $upload_path     = public_path().$imageUrl;
-            Image::make($file)->resize(300,300)->save($upload_path);
+            // Image::make($file)->resize(300,300)->save($upload_path);
+            Image::make($file)->resize(870,350)->save($upload_path);
             
             // --- Image Intervention End ---
 

@@ -52,7 +52,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Descrition</label>
+                                        <label for="">Description</label> <span>[max 500 character]</span>
                                         <textarea name="description" rows="5" class="form-control @error('description') is-invalid @enderror"></textarea>
                                         @error('description')
                                             <div class="text-danger">{{ $message }}</div>

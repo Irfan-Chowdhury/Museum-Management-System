@@ -71,7 +71,7 @@ class ReportController extends Controller
 
 
         // return view('admin.pages.report.visit-entry-PDF',compact('visit_entries','from','to'));
-        $pdf = PDF::loadView('admin.pages.report.visit-entry-PDF', compact('visit_entries','from','to'));
+        $pdf = PDF::loadView('admin.pages.report.visit-entry-PDF', compact('visit_entries','from','to')); //goto resource-> admin.pages.report.visit-entry-PDF
         return $pdf->download('visit-entry-info.pdf');
     }
 

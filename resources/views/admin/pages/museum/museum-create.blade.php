@@ -37,7 +37,7 @@
                             @include('admin.includes.session_message')
                         </div>
                         <div class="card-header">
-                            <h4 class="text-center">Add Museum Info</h4>
+                            <h4 class="text-center">Add New Museum Info</h4>
                         </div>
                         <!-- /.card-header -->
                             <!-- form start -->
@@ -52,7 +52,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="">About This Institue</label>
+                                        <label for="">About This Institue</label> <span>[max 3000 character]</span>
                                         <textarea name="description" class="textarea @error('description') is-invalid @enderror"></textarea>
                                         @error('description')
                                             <div class="text-danger">{{ $message }}</div>

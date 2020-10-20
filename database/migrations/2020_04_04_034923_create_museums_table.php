@@ -15,7 +15,6 @@ class CreateMuseumsTable extends Migration
     {
         Schema::create('museums', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id'); //Admin
             $table->string('museum_name'); 
             $table->longText('description')->nullable();
             $table->text('address');

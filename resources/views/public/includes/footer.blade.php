@@ -1,19 +1,19 @@
 <footer>
     <div class="container">
       <div class="row">
+        <div class="span3"></div>
         <div class="span3">
           <div class="widget">
             <h5 class="widgetheading">Browse pages</h5>
             <ul class="link-list">
-              <li><a href="#">About our company</a></li>
-              <li><a href="#">Our services</a></li>
-              <li><a href="#">Meet our team</a></li>
-              <li><a href="#">Explore our portfolio</a></li>
-              <li><a href="#">Get in touch with us</a></li>
+              <li><a href="{{route('home')}}">Home</a></li>
+              <li><a href="{{route('about')}}">About</a></li>
+              <li><a href="{{route('gallery')}}">Gallery</a></li>
+              <li><a href="{{route('contact')}}">Contact</a></li>
             </ul>
           </div>
         </div>
-        <div class="span3">
+        {{-- <div class="span3">
           <div class="widget">
             <h5 class="widgetheading">Important stuff</h5>
             <ul class="link-list">
@@ -24,8 +24,8 @@
               <li><a href="#">Flattern forum</a></li>
             </ul>
           </div>
-        </div>
-        <div class="span3">
+        </div> --}}
+        {{-- <div class="span3">
           <div class="widget">
             <h5 class="widgetheading">Flickr photostream</h5>
             <div class="flickr_badge">
@@ -34,21 +34,25 @@
             <div class="clear">
             </div>
           </div>
-        </div>
+        </div> --}}
+@php
+  $museum = DB::table('museums')->orderBy('id', 'desc')->first();  //update         
+@endphp
         <div class="span3">
           <div class="widget">
             <h5 class="widgetheading">Get in touch with us</h5>
             <address>
-                              <strong>Flattern studio, Pte Ltd</strong><br>
-                               Springville center X264, Park Ave S.01<br>
-                               Semarang 16425 Indonesia
-                           </address>
+                <strong>{{$museum->museum_name}}</strong><br>
+                {{$museum->address}}<br>
+                  
+            </address>
             <p>
-              <i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
-              <i class="icon-envelope-alt"></i> email@domainname.com
+              <i class="icon-phone"></i> (+88) {{$museum->phone}} <br>
+              <i class="icon-envelope-alt"></i> museum@gmail.com
             </p>
           </div>
         </div>
+        <div class="span3"></div>
       </div>
     </div>
     <div id="sub-footer">

@@ -65,6 +65,24 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
+                                    {{-- <div class="form-group ">
+                                        <label>Role</label> 
+                                        <select name="role" class="form-control @error('role') is-invalid @enderror">
+                                            @if ($admin->role == 'sub-admin')
+                                                <option value="{{$admin->role}}" {{ $admin->role == 'sub-admin' ? 'selected="selected"' : '' }}>{{$admin->role}}</option>
+                                                <option value="entry-operator">entry-operator</option>
+                                            @else
+                                                <option value="{{$admin->role}}" {{ $admin->role == 'entry-operator' ? 'selected="selected"' : '' }}>{{$admin->role}}</option>
+                                                <option value="sub-admin">sub-admin</option>
+                                            @endif
+                                        </select>
+                                        @error('role')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div> --}}
+
+
                                     <div class="form-group">
                                         <label for="exampleInputFile">Update Image</label> <br>
                                         <img src="{{asset("$admin->photo")}}" height="100px" width="100px" id="admin_photo">

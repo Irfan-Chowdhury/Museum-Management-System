@@ -40,6 +40,11 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>'is_admin']
     Route::post('/admin-update/{id}', 'AdminController@admin_update')->name('admin-update');
     Route::get('/admin-delete/{id}', 'AdminController@admin_delete')->name('admin-delete');
 
+    //-- Users List--
+    Route::get('/user-list', 'AdminController@user_list')->name('user-list');
+    Route::get('/user-delete/{id}', 'AdminController@user_delete')->name('user-delete');
+
+
     // -- Notice --
     Route::get('/notice-create','NoticeController@notice_create')->name('notice-create');
     Route::post('/notice-save','NoticeController@notice_save')->name('notice-save');
@@ -168,7 +173,12 @@ Route::group(['namespace'=>'Front'], function () {
         Route::get('/notice/{id}','VisitorController@notice_read')->name('notice.read');
         Route::get('/rule','VisitorController@rule')->name('rule');
         Route::get('/schedule','VisitorController@schedule')->name('schedule');
+    });
+
+    //Items
+    Route::group(['prefix' => 'item','middleware'=>'is_user'], function () {
         Route::get('/item-info','VisitorController@item_info')->name('item-info');
+        Route::get('/item-info-details/{id}','VisitorController@item_info_details')->name('item-info-details');
     });
     
     //Donation

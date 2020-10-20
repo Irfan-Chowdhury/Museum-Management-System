@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin-master')
 
-@section('title','Admin List')
+@section('title','User List')
     
 @section('admin-content')
 
@@ -12,7 +12,7 @@
        
             <div class="card">
                 <div class="card-header">
-                  <h2 class="text-secondary">Admins Info List</h2>
+                  <h2 class="text-secondary">Users Info List</h2>
                 </div>
                 <div>
                     @include('admin.includes.session_message')
@@ -23,30 +23,27 @@
                         <thead>
                             <tr class="text-center table-primary">
                                 <th>SL</th>
+                                <th>User ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Address</th>
-                                {{-- <th>Role</th> --}}
                                 <th>Photo</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($admins as $key => $admin)                                    
-                                    <tr>
+                                @foreach ($users as $key => $user)                                    
+                                    <tr class="text-center">
                                         <td>{{$key+1}}</td>
-                                        <td>{{$admin->name}}</td>
-                                        <td>{{$admin->email}}</td>
-                                        <td>{{$admin->phone}}</td>
-                                        <td>{{substr(strip_tags($admin->address), 0, 15)}}</td> <!--String Limit-->
-                                        {{-- <td>{{$admin->role}}</td> --}}
-                                        <td><img src="{{asset("$admin->photo")}}" height="50px" width="50px" alt="" srcset=""></td>
+                                        <td>{{$user->user_id_no}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->phone}}</td>
+                                        <td>{{$user->address}}</td> <!--String Limit-->
+                                        <td><img src="{{asset("$user->photo")}}" height="50px" width="50px" alt="" srcset=""></td>
                                         <td>
-                                            {{-- <button type="button" title="Edit" class="m-1 btn btn-info fa fa-edit" data-toggle="modal" data-target="#exampleModal-{{$admin->id}}"></button>
-                                                    @include('admin.pages.admins.admin-view') --}}
-                                            <a href="{{route('admin-edit',$admin->id)}}" class="m-1 btn btn-info fa fa-edit" title="Edit"></a>
-                                            <a href="{{route('admin-delete',$admin->id)}}" onclick="return confirm('Are You Sure to delete ?')" class="btn btn-danger fa fa-trash-alt" title="Delete"></a>
+                                            <a href="{{route('user-delete',$user->id)}}" onclick="return confirm('Are You Sure to delete ?')" class="btn btn-danger fa fa-trash-alt" title="Delete"></a>
                                         </td>
                                     </tr>
                                 @endforeach

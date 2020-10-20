@@ -31,6 +31,7 @@
                                 <th>Phone</th>
                                 <th>Quantity</th>
                                 <th>Total Tk</th>
+                                <th>Entry Operator</th>
                                 <th>Entry Date</th>
                                 <th>Time</th>
                                 <th>Action</th>
@@ -74,6 +75,7 @@
                             
                                         <td>{{$item->quantity}}</td> 
                                         <td>{{$item->total_taka}}</td> 
+                                        <td>{{$item->entry_operator}}</td> 
                                         <td>{{date('d-m-Y', strtotime($item->created_at))}}</td> <!-- 07-04-2020 -->                                        
                                         <td class="text-center">{{date('h:i A',strtotime($item->created_at))}}</td>
                                         <td><a href="{{route('visit-entry-delete',$item->id)}}" onclick="return confirm('Are You Sure to delete ?')" class="btn btn-danger fa fa-trash-alt" title="Delete"></a></td>

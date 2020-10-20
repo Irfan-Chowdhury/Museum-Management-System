@@ -109,7 +109,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Phone (+88)  <span class="text-danger">*</span></label> 
+                                        <label class="col-sm-3 col-form-label">Phone (+880)  <span class="text-danger">*</span></label> 
                                         <div class="col-sm-9">
                                             <input type="number" name="visitor_phone" class="form-control @error('visitor_phone') is-invalid @enderror" value="{{old('visitor_phone')}}" placeholder="Type Phone">
                                         </div>

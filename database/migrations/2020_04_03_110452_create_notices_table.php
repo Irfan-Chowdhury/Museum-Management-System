@@ -15,7 +15,6 @@ class CreateNoticesTable extends Migration
     {
         Schema::create('notices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id'); //Admin
             $table->string('title')->unique();
             $table->longText('description');
             $table->string('photo')->nullable();

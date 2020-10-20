@@ -16,10 +16,16 @@ class RuleController extends Controller
 
     public function rule_save(Request $request)
     {
+        // $text =  str_word_count($request->description);
+
+        // return $text;
+        // if(str_word_count($request->description) > 6)
+        // return 'more than 6 words';
+
         //--------------------------- validation -----------------------------
-        $validator= Validator::make($request->all(),[
+        $validator = Validator::make($request->all(),[
             'title'       => 'required|unique:rules|min:3|max:50',
-            'description' => 'required',
+            'description' => 'required|max:500',
         ]);
 
         if($validator->fails())
@@ -28,7 +34,6 @@ class RuleController extends Controller
         }
 
         $rule              = new Rule();
-        $rule->user_id     = Auth::user()->id;
         $rule->title       = $request->title;
         $rule->description = $request->description;
         $rule->save();
@@ -54,7 +59,17 @@ class RuleController extends Controller
     public function rule_update(Request $request,$id)
     {
         $rule = Rule::find($id);
-        $rule->user_id     = Auth::user()->id;
+
+        $validator = Validator::make($request->all(),[
+            'title'       => 'required|min:3|max:50|unique:rules,title,'.$rule->id,
+            'description' => 'required|max:500',
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $rule->title       = $request->title;
         $rule->description = $request->description;
         $rule->update();

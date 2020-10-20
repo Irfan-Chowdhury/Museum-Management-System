@@ -36,7 +36,7 @@
         <div class="row">
         <div class="span8">
             <div class="inner-heading">
-            <h2><strong>Museum</strong> item info with direction</h2>
+            <h2><strong>Museum's</strong> items info with direction</h2>
             </div>
         </div>
         <div class="span4">
@@ -63,6 +63,7 @@
                             <th>Item Name</th>
                             <th>Category</th>
                             <th>Direction (Room)</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,6 +76,7 @@
                                 <td style="text-align:center">{{$item->category_name}}</td>
                                 {{-- <td style="text-align:center">{{$item->category->store_direction}}</td> --}}
                                 <td style="text-align:center">{{$item->store_direction}}</td>
+                                <td style="text-align:center"><a href="{{route('item-info-details',$item->id)}}">View Details</a></td>
                             </tr>
                        @endforeach 
 

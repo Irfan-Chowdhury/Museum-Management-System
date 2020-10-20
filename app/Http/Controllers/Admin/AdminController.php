@@ -23,8 +23,9 @@ class AdminController extends Controller
         $validator= Validator::make($request->all(),[
             'name'      => 'required',
             'email'     => 'required|email|unique:users',
-            'phone'     => 'required',
+            'phone'     => 'required|min:10|max:10',
             'address'   => 'required',
+            // 'role'   => 'required',
             'password'  => 'required|min:5',
             // 'image'     => 'required|image|max:10240',
         ]);
@@ -39,8 +40,10 @@ class AdminController extends Controller
         $admin->email   = $request->email;
         $admin->phone   = $request->phone;
         $admin->address = $request->address;
+        $admin->role    = 'sub-admin'; 
         $admin->password= Hash::make($request->password);
-        $admin->role    = 'admin' ;
+        // $admin->role    = 'admin' ;
+
         
         // --- Image Intervention Start ---
 
@@ -66,7 +69,9 @@ class AdminController extends Controller
 
     public function admin_list()
     {
-        $admins = User::where('role','=','admin')->get();
+        // $admins = User::where('role','=','admin')->get();
+        $admins = User::where('role','=','sub-admin')
+                        ->get();
 
         return view('admin.pages.admins.admin-list',compact('admins'));
     }
@@ -122,6 +127,7 @@ class AdminController extends Controller
         $admin->email   = $request->email;
         $admin->phone   = $request->phone;
         $admin->address = $request->address;
+        // $admin->role = $request->role;  //update-2
         
         $admin->update();
 
@@ -149,4 +155,31 @@ class AdminController extends Controller
         
         return redirect()->back();
     }
+
+
+
+
+    public function user_list()
+    {
+        $users = User::where('role','=','user')->get();
+
+        return view('admin.pages.user.user-list',compact('users'));
+    }
+
+    public function user_delete($id)
+    {
+        $user = User::find($id);
+
+        if (File::exists(public_path().$user->photo)) //delete previous image from storage
+        {  
+            File::delete(public_path().$user->photo);
+        }
+
+        $user->delete();
+        session()->flash('type','success');
+        session()->flash('message','User deleted successful.');
+        
+        return redirect()->back();
+    }
+
 }
