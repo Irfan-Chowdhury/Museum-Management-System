@@ -19,7 +19,6 @@ class CreateDonationsTable extends Migration
             $table->string('item_name');
             $table->longText('description');
             $table->string('status')->default('pending');
-            // $table->string('photo');
             $table->timestamps();
         });
     }
