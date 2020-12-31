@@ -64,22 +64,20 @@ class UserController extends Controller
         // ----------- User Id No Generate Start --------
 
         $last_data  = User::latest()->first(); //Catch th last row's data
-
         $timestamp = strtotime($last_data->created_at); // the 'created_at' will make full string formate
-        
         $year = date('y', $timestamp); //take the last digit of year (like 20). if you want to take full length like 2020 type 'Y' replace of the 'y'
         $month = date('m', $timestamp); // number of month like-  April = 04
-
         $year_month = 'MU-'.$year.$month.$last_data->id; // "MU-" = Just a String || "$year" = 20 (last digit of year) || "$month" = number of month like-  April = 04 || "$data->id" the id of database row which you saved || M=Museum, U=User
-
         $last_data->user_id_no = $year_month; // Example:  'MV-200401' || MV- string || 20=Year || 04=April || 01 = id of database (row) 
         $last_data->update();
 
         // ----------- User Id No Generate End --------
 
+        $user->sendEmailVerificationNotification();
 
+        
         session()->flash('success','');
-        session()->flash('message','Registration Successful.');
+        session()->flash('message','Registration Successful. Please Verify Your Email Address');
         
         return redirect()->back();
     }
@@ -88,6 +86,8 @@ class UserController extends Controller
     
     public function userLogin(Request $request)
     {
+        $user = User::where('email','=',$request->email)->first();
+
         $validator= Validator::make($request->all(),[
             'email'    => 'required|string|email',
             'password' => 'required|min:8',
@@ -100,7 +100,13 @@ class UserController extends Controller
 
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        elseif ($user->email_verified_at == null) {
+            session()->flash('error','');
+            session()->flash('message','Please at first verify your Email ID.');
+            return redirect()->back();
+        }
 
+        
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             // Authentication passed...

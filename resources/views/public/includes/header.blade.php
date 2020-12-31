@@ -56,6 +56,7 @@
                   </div>
                   <div class="modal-body">
                     <form action="{{route('user-registration')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                    {{-- <form action="{{route('register')}}" method="POST" class="form-horizontal" enctype="multipart/form-data"> --}}
                       @csrf
 
                       <div class="control-group">
@@ -221,7 +222,8 @@
           <div class="row">
             <div class="span4">
               <div class="logo">
-                <a href="index.html"><img src="{{asset('public/img/logo.png')}}" alt="" class="logo" /></a>
+                {{-- <a href="index.html"><img src="{{asset('public/img/logo.png')}}" alt="" class="logo" /></a> --}}
+                <a href="index.html"><img src="{{asset('public/images/museum_logo.png')}}" style="width:190px; height:50px" alt="" class="logo" /></a>
                 <h1>Museum Management System</h1>
               </div>
             </div>
@@ -329,5 +331,14 @@
             <h6 style="color:green"><strong> @if(session()->has('welcome')) {{ session('welcome') }} @else Congratulation !!  @endif</strong> {{ session('message') }}</h6>
           </div>
         </div>
+      {{-- @elseif (session('resent'))
+        <div>
+            <p>A fresh verification link has been sent to your email address.</p>
+        </div> --}}
       @endif
+
+      {{-- <form method="POST" action="{{ route('verification.resend') }}">
+          @csrf
+          <button type="submit">click here to request another.</button>
+      </form> --}}
       

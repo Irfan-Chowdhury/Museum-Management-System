@@ -59,7 +59,7 @@ class AdminController extends Controller
 
 
         $admin->photo = $imageUrl;
-        $admin->save();
+        $admin->save();        
 
         session()->flash('type','success');
         session()->flash('message','Admin Added Successful.');

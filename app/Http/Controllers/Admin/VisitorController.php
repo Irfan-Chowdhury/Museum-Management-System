@@ -10,6 +10,7 @@ use Auth;
 use App\Imports\ExcelImport;
 use App\Exports\ExcelExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\VisitEntry;
 
 
 class VisitorController extends Controller
@@ -107,6 +108,20 @@ class VisitorController extends Controller
 
     public function visitor_delete($id)
     {
+
+        $visitor  = Visitor::find($id);
+
+        $visit_entry = VisitEntry::where('visitor_id',$visitor->id)->first();
+
+        if ($visit_entry) //For Database Relationship Maintain
+        {
+            session()->flash('type','warning');
+            session()->flash('message','Sorry !! This data can not be deleted.');
+
+            return redirect()->back();
+
+        }
+
         $visitor  = Visitor::find($id);
         $visitor->delete();
 

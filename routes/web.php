@@ -23,7 +23,11 @@
 //     return view('admin/index');
 // });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
+Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
+Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 //Route::get('admin/home', 'HomeController@index')->name('admin.home');
 
@@ -207,6 +211,9 @@ Route::group(['namespace'=>'Front'], function () {
         Route::post('/password-change-update','UserController@passwordChangeUpdate')->name('password-change-update');
     });
 });
+
+// Route::post('/register','Auth\RegisterController@register')->name('register');
+
 
 
 //Multiple Authentication

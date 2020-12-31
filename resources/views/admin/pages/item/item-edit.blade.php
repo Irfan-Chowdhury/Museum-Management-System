@@ -55,7 +55,7 @@
                                     <div class="form-group ">
                                         <label>Category</label> 
                                         <select name="category_id" class="form-control">
-                                            <option value=""> -- Select Day --</option>
+                                            <option value=""> -- Select Category --</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{$category->id}}" {{ $category->id == $item->category_id ? 'selected="selected"' : '' }}>{{$category->category_name}}</option>
                                             @endforeach
