@@ -53,6 +53,7 @@
 ### Others
 - Authentication
 - Email Verification
+- Multiple Image Handle
 
 
 ### Packages
