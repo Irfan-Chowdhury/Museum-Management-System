@@ -7,12 +7,12 @@
 </div>
 
 
-### Please Visit the Demo Project:
+### Please Visit the Live Demo Project:
 - <b>Site :</b> <a href="http://www.museum.irfanchowdhury.xyz/public/">**_www.museum.irfanchowdhury.xyz_**</a> &nbsp; <i>[Login with (username & password) : *_user@gmail.com_*]</i>
 - <b>Admin-Panel :</b> <a href="http://www.museum.irfanchowdhury.xyz/public/login">**_Click Here_**</a> &nbsp; <i>[Login with (username & password) : *_admin@gmail.com_*]</i>
 
 
-### Technology use:
+### Technology Use:
 -	<b>Framework :</b> Laravel-6
 -	<b>Frontend :</b> HTML, CSS, Bootstrap-4, JQuery
 -	<b>Admin Template :</b> Admin LTE
